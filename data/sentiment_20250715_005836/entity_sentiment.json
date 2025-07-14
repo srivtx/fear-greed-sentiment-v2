@@ -1,0 +1,224 @@
+{
+  "cryptos": {
+    "BTC": {
+      "sentiment_score": 0.17839402164651816,
+      "sentiment_label": "neutral",
+      "mention_count": 44,
+      "positive_count": 31,
+      "neutral_count": 8,
+      "negative_count": 5,
+      "sources": {
+        "reddit": 44
+      },
+      "confidence": 0.7780303030303031
+    },
+    "DOT": {
+      "sentiment_score": 0.3170948019924249,
+      "sentiment_label": "positive",
+      "mention_count": 1,
+      "positive_count": 1,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.41666666666666663
+    },
+    "ADA": {
+      "sentiment_score": 0.3649145577,
+      "sentiment_label": "positive",
+      "mention_count": 1,
+      "positive_count": 1,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.41666666666666663
+    },
+    "ETH": {
+      "sentiment_score": 0.21738858346247078,
+      "sentiment_label": "positive",
+      "mention_count": 10,
+      "positive_count": 8,
+      "neutral_count": 2,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 10
+      },
+      "confidence": 0.8066666666666666
+    },
+    "SOL": {
+      "sentiment_score": 0.2319672499046966,
+      "sentiment_label": "positive",
+      "mention_count": 3,
+      "positive_count": 2,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 3
+      },
+      "confidence": 0.41666666666666663
+    },
+    "AVAX": {
+      "sentiment_score": 0.25712264991408973,
+      "sentiment_label": "positive",
+      "mention_count": 1,
+      "positive_count": 1,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.41666666666666663
+    },
+    "BNB": {
+      "sentiment_score": 0.18877674074074072,
+      "sentiment_label": "neutral",
+      "mention_count": 2,
+      "positive_count": 1,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 2
+      },
+      "confidence": 0.31666666666666665
+    },
+    "DOGE": {
+      "sentiment_score": -0.05175,
+      "sentiment_label": "neutral",
+      "mention_count": 1,
+      "positive_count": 0,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.41666666666666663
+    }
+  },
+  "stocks": {
+    "AAPL": {
+      "sentiment_score": 0.37800569356226127,
+      "sentiment_label": "positive",
+      "mention_count": 2,
+      "positive_count": 2,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 2
+      },
+      "confidence": 0.4666666666666667
+    },
+    "V": {
+      "sentiment_score": 0.3170948019924249,
+      "sentiment_label": "positive",
+      "mention_count": 1,
+      "positive_count": 1,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.41666666666666663
+    },
+    "GOOGL": {
+      "sentiment_score": 0.34915722737484084,
+      "sentiment_label": "positive",
+      "mention_count": 3,
+      "positive_count": 3,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 3
+      },
+      "confidence": 0.5166666666666666
+    },
+    "AMZN": {
+      "sentiment_score": 0.286435970533586,
+      "sentiment_label": "positive",
+      "mention_count": 6,
+      "positive_count": 6,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 6
+      },
+      "confidence": 0.6666666666666666
+    },
+    "FB": {
+      "sentiment_score": 0.26193729832787105,
+      "sentiment_label": "positive",
+      "mention_count": 2,
+      "positive_count": 2,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 2
+      },
+      "confidence": 0.4666666666666667
+    },
+    "NVDA": {
+      "sentiment_score": 0.27236158189169096,
+      "sentiment_label": "positive",
+      "mention_count": 3,
+      "positive_count": 2,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 3
+      },
+      "confidence": 0.41666666666666663
+    },
+    "TSLA": {
+      "sentiment_score": 0.3106089613174528,
+      "sentiment_label": "positive",
+      "mention_count": 4,
+      "positive_count": 4,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 4
+      },
+      "confidence": 0.5666666666666667
+    }
+  },
+  "indices": {
+    "IWM": {
+      "sentiment_score": 0.3170948019924249,
+      "sentiment_label": "positive",
+      "mention_count": 1,
+      "positive_count": 1,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.41666666666666663
+    },
+    "SPY": {
+      "sentiment_score": 0.2415615459707386,
+      "sentiment_label": "positive",
+      "mention_count": 5,
+      "positive_count": 5,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 5
+      },
+      "confidence": 0.6166666666666667
+    },
+    "QQQ": {
+      "sentiment_score": 0.36645560663015386,
+      "sentiment_label": "positive",
+      "mention_count": 4,
+      "positive_count": 4,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 4
+      },
+      "confidence": 0.5666666666666667
+    }
+  }
+}

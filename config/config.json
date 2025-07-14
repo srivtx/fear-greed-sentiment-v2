@@ -1,0 +1,40 @@
+{
+  "twitter": {
+    "bearer_token": "AAAAAAAAAAAAAAAAAAAAADHydwEAAAAAJZrJn2ReYWx7hS7%2FZJoxbKzumNw%3D953rffvbcZFZvZ11AfrcXdTx9ZkR6jUZA7L61ksMRITBlUZjum"
+  },
+  "reddit": {
+    "client_id": "nsYbMNPzQim1ULl5ZIu8Nw",
+    "client_secret": "DwLfCgmpXp7gGFQgX8s4CSHYSGUDpw",
+    "username": "ohmygosh_11",
+    "password": "nowayout2021",
+    "user_agent": "script:fear-greed-engine:v0.1 (by /u/ohmygosh_11)"
+  },
+  "news": {
+    "api_key": "64617c6250b24f1888dd11c19ef16817",
+    "query_terms": [
+      "cryptocurrency", "bitcoin", "ethereum", "crypto market",
+      "stock market", "financial markets", "market sentiment"
+    ]
+  },
+  "coins": ["bitcoin", "ethereum", "cardano", "solana", "ripple"],
+  "subreddits": ["Bitcoin", "CryptoCurrency", "wallstreetbets", "investing"],
+  "targets": {
+    "cryptocurrencies": ["BTC", "ETH", "XRP", "ADA", "SOL"],
+    "stocks": ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"],
+    "indices": ["SPY", "QQQ", "DIA"]
+  },
+  "data_storage": {
+    "path": "data"
+  },
+  "engine": {
+    "collection_interval_minutes": 60,
+    "sentiment_analysis_interval_minutes": 120,
+    "signal_generation_interval_minutes": 240,
+    "log_level": "INFO"
+  },
+  "signals": {
+    "sentiment_threshold": 0.25,
+    "confidence_threshold": 0.5,
+    "minimum_mentions": 3
+  }
+}

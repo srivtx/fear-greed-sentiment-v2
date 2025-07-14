@@ -1,0 +1,193 @@
+2025-07-14 23:01:37,638 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-14 23:01:38,164 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-14 23:01:38,164 - data_collection.news.news_collector - WARNING - No News API key found
+2025-07-14 23:01:38,182 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:01:40,305 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:01:40,345 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-14 23:01:40,346 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-14 23:01:40,346 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-14 23:01:40,347 - engine - INFO - Starting data collection
+2025-07-14 23:01:40,347 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-14 23:01:40,350 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-14 23:01:40,352 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-14 23:01:40,352 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-14 23:01:40,355 - data_collection.collector - INFO - Collecting News data
+2025-07-14 23:01:40,355 - data_collection.news.news_collector - ERROR - News API not connected
+2025-07-14 23:01:40,355 - data_collection.collector - INFO - Collecting Market data
+2025-07-14 23:01:40,355 - data_collection.collector - WARNING - No news articles collected
+2025-07-14 23:01:40,356 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-14 23:01:40,680 - data_collection.financial.market_data_collector - WARNING - No data found for BTC-USD
+2025-07-14 23:01:40,958 - data_collection.twitter.twitter_collector - ERROR - Error collecting tweets: 400 Bad Request
+There were errors processing your request: Reference to invalid operator 'cashtag'. Operator is not available in current product or product packaging. Please refer to complete available operator list at http://t.co/operators. (at position 16), Reference to invalid operator 'cashtag'. Operator is not available in current product or product packaging. Please refer to complete available operator list at http://t.co/operators. (at position 34)
+2025-07-14 23:01:41,024 - data_collection.financial.market_data_collector - WARNING - No data found for ETH-USD
+2025-07-14 23:01:41,322 - data_collection.twitter.twitter_collector - WARNING - Rate limit exceeded, sleeping for 15 minutes
+2025-07-14 23:01:41,430 - data_collection.financial.market_data_collector - WARNING - No data found for XRP-USD
+2025-07-14 23:01:41,840 - data_collection.financial.market_data_collector - WARNING - No data found for ADA-USD
+2025-07-14 23:01:42,193 - data_collection.financial.market_data_collector - WARNING - No data found for SOL-USD
+2025-07-14 23:01:42,573 - data_collection.financial.market_data_collector - WARNING - No data found for AAPL
+2025-07-14 23:01:42,921 - data_collection.financial.market_data_collector - WARNING - No data found for MSFT
+2025-07-14 23:01:43,298 - data_collection.financial.market_data_collector - WARNING - No data found for GOOGL
+2025-07-14 23:01:43,654 - data_collection.financial.market_data_collector - WARNING - No data found for AMZN
+2025-07-14 23:01:44,003 - data_collection.financial.market_data_collector - WARNING - No data found for TSLA
+2025-07-14 23:01:44,180 - data_collection.reddit.reddit_collector - INFO - Collected 56 posts from r/Bitcoin
+2025-07-14 23:01:44,395 - data_collection.financial.market_data_collector - WARNING - No data found for SPY
+2025-07-14 23:01:44,749 - data_collection.financial.market_data_collector - WARNING - No data found for QQQ
+2025-07-14 23:01:45,142 - data_collection.financial.market_data_collector - WARNING - No data found for DIA
+2025-07-14 23:01:45,181 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-14 23:01:45,243 - data_collection.financial.market_data_collector - INFO - Collected current market data for 0 symbols
+2025-07-14 23:01:45,243 - data_collection.collector - WARNING - No market data collected
+2025-07-14 23:01:45,243 - data_collection.collector - INFO - Collecting historical market data (weekly update)
+2025-07-14 23:01:45,243 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-14 23:01:45,494 - data_collection.financial.market_data_collector - WARNING - No historical data found for BTC-USD
+2025-07-14 23:01:46,103 - data_collection.financial.market_data_collector - WARNING - No historical data found for ETH-USD
+2025-07-14 23:01:46,589 - data_collection.financial.market_data_collector - WARNING - No historical data found for XRP-USD
+2025-07-14 23:01:47,262 - data_collection.financial.market_data_collector - WARNING - No historical data found for ADA-USD
+2025-07-14 23:01:47,777 - data_collection.financial.market_data_collector - WARNING - No historical data found for SOL-USD
+2025-07-14 23:01:48,132 - data_collection.reddit.reddit_collector - INFO - Collected 99 posts from r/CryptoCurrency
+2025-07-14 23:01:48,304 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-14 23:01:48,814 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-14 23:01:49,133 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-14 23:01:49,275 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-14 23:01:49,779 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-14 23:01:50,246 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-14 23:01:50,735 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-14 23:01:51,223 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-14 23:01:51,798 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-14 23:01:51,999 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 0 symbols
+2025-07-14 23:01:51,999 - data_collection.collector - WARNING - No historical data collected
+2025-07-14 23:01:52,163 - data_collection.reddit.reddit_collector - INFO - Collected 126 posts from r/wallstreetbets
+2025-07-14 23:01:53,165 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-14 23:01:56,123 - data_collection.reddit.reddit_collector - INFO - Collected 163 posts from r/investing
+2025-07-14 23:01:57,125 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 163
+2025-07-14 23:01:57,139 - data_collection.collector - INFO - Saved 163 Reddit posts to data\collection_20250714_230140\reddit_20250714_230157.json
+2025-07-14 23:16:41,347 - data_collection.twitter.twitter_collector - ERROR - Error collecting tweets: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-07-14 23:16:41,886 - data_collection.twitter.twitter_collector - ERROR - Error collecting tweets: 400 Bad Request
+There were errors processing your request: Reference to invalid operator 'cashtag'. Operator is not available in current product or product packaging. Please refer to complete available operator list at http://t.co/operators. (at position 8)
+2025-07-14 23:16:42,725 - data_collection.twitter.twitter_collector - INFO - Collected 100 tweets for batch
+2025-07-14 23:16:48,245 - data_collection.twitter.twitter_collector - WARNING - Rate limit exceeded, sleeping for 15 minutes
+2025-07-14 23:31:37,341 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-14 23:31:37,342 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-14 23:31:37,342 - data_collection.news.news_collector - INFO - News API connection successful
+2025-07-14 23:31:37,345 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:31:37,876 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:31:37,887 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-14 23:31:37,888 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-14 23:31:37,888 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-14 23:31:37,889 - engine - INFO - Starting data collection
+2025-07-14 23:31:37,889 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-14 23:31:37,892 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-14 23:31:37,893 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-14 23:31:37,893 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-14 23:31:37,894 - data_collection.collector - INFO - Collecting News data
+2025-07-14 23:31:37,895 - data_collection.collector - INFO - Collecting Market data
+2025-07-14 23:31:37,899 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-14 23:31:38,414 - tweepy.client - WARNING - Rate limit exceeded. Sleeping for 3 seconds.
+2025-07-14 23:31:38,528 - data_collection.financial.market_data_collector - INFO - Successfully collected data for 5 cryptocurrencies from CoinGecko
+2025-07-14 23:31:38,792 - data_collection.financial.market_data_collector - WARNING - No data found for AAPL
+2025-07-14 23:31:39,191 - data_collection.financial.market_data_collector - WARNING - No data found for MSFT
+2025-07-14 23:31:39,542 - data_collection.financial.market_data_collector - WARNING - No data found for GOOGL
+2025-07-14 23:31:39,987 - data_collection.financial.market_data_collector - WARNING - No data found for AMZN
+2025-07-14 23:31:40,383 - data_collection.financial.market_data_collector - WARNING - No data found for TSLA
+2025-07-14 23:31:40,760 - data_collection.financial.market_data_collector - WARNING - No data found for SPY
+2025-07-14 23:31:41,092 - data_collection.financial.market_data_collector - WARNING - No data found for QQQ
+2025-07-14 23:31:41,440 - data_collection.financial.market_data_collector - WARNING - No data found for DIA
+2025-07-14 23:31:41,541 - data_collection.financial.market_data_collector - INFO - Collected current market data for 5 symbols
+2025-07-14 23:31:41,562 - data_collection.collector - INFO - Saved market data for 5 symbols
+2025-07-14 23:31:41,562 - data_collection.collector - INFO - Collecting historical market data (weekly update)
+2025-07-14 23:31:41,562 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-14 23:31:41,573 - data_collection.reddit.reddit_collector - INFO - Collected 57 posts from r/Bitcoin
+2025-07-14 23:31:41,768 - tweepy.client - WARNING - Rate limit exceeded. Sleeping for 900 seconds.
+2025-07-14 23:31:42,574 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-14 23:31:45,225 - data_collection.news.news_collector - INFO - Total news articles collected: 95
+2025-07-14 23:31:45,230 - data_collection.collector - INFO - Saved 95 news articles to data\collection_20250714_233137\news_20250714_233145.json
+2025-07-14 23:31:45,417 - data_collection.reddit.reddit_collector - INFO - Collected 103 posts from r/CryptoCurrency
+2025-07-14 23:31:46,418 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-14 23:31:49,603 - data_collection.reddit.reddit_collector - INFO - Collected 130 posts from r/wallstreetbets
+2025-07-14 23:31:50,148 - data_collection.financial.market_data_collector - WARNING - CoinGecko API returned status code 429 for solana
+2025-07-14 23:31:50,605 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-14 23:31:52,508 - data_collection.financial.market_data_collector - WARNING - No historical data found for SOL in any format
+2025-07-14 23:31:52,819 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-14 23:31:53,358 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-14 23:31:53,370 - data_collection.reddit.reddit_collector - INFO - Collected 166 posts from r/investing
+2025-07-14 23:31:53,832 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-14 23:31:54,371 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 166
+2025-07-14 23:31:54,390 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-14 23:31:54,390 - data_collection.collector - INFO - Saved 166 Reddit posts to data\collection_20250714_233137\reddit_20250714_233154.json
+2025-07-14 23:31:54,840 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-14 23:31:55,322 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-14 23:31:55,768 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-14 23:31:56,211 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-14 23:31:56,412 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 4 symbols
+2025-07-14 23:31:56,424 - data_collection.collector - INFO - Saved historical data for 4 symbols
+2025-07-14 23:34:52,744 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:34:52,999 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:34:53,015 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-14 23:34:53,016 - sentiment_analysis.analyzer - INFO - Running sentiment analysis on data in data\collection_YYYYMMDD_HHMMSS
+2025-07-14 23:34:53,017 - sentiment_analysis.analyzer - ERROR - No text data found to analyze
+2025-07-14 23:34:53,018 - FearGreedEngine - INFO - Sentiment analysis completed
+2025-07-14 23:35:37,373 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-14 23:35:37,375 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-14 23:35:37,375 - data_collection.news.news_collector - INFO - News API connection successful
+2025-07-14 23:35:37,378 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:35:38,076 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:35:38,093 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-14 23:35:38,093 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-14 23:35:38,094 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-14 23:35:38,094 - engine - INFO - Starting data collection
+2025-07-14 23:35:38,094 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-14 23:35:38,096 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-14 23:35:38,096 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-14 23:35:38,097 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-14 23:35:38,100 - data_collection.collector - INFO - Collecting News data
+2025-07-14 23:35:38,101 - data_collection.collector - INFO - Collecting Market data
+2025-07-14 23:35:38,103 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-14 23:35:38,802 - tweepy.client - WARNING - Rate limit exceeded. Sleeping for 663 seconds.
+2025-07-14 23:35:38,904 - data_collection.financial.market_data_collector - INFO - Successfully collected data for 5 cryptocurrencies from CoinGecko
+2025-07-14 23:35:39,981 - data_collection.financial.market_data_collector - WARNING - No data found for AAPL
+2025-07-14 23:35:40,794 - data_collection.financial.market_data_collector - WARNING - No data found for MSFT
+2025-07-14 23:35:41,568 - data_collection.financial.market_data_collector - WARNING - No data found for GOOGL
+2025-07-14 23:35:41,784 - data_collection.reddit.reddit_collector - INFO - Collected 56 posts from r/Bitcoin
+2025-07-14 23:35:42,365 - data_collection.financial.market_data_collector - WARNING - No data found for AMZN
+2025-07-14 23:35:42,784 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-14 23:35:43,143 - data_collection.financial.market_data_collector - WARNING - No data found for TSLA
+2025-07-14 23:35:43,931 - data_collection.financial.market_data_collector - WARNING - No data found for SPY
+2025-07-14 23:35:44,703 - data_collection.financial.market_data_collector - WARNING - No data found for QQQ
+2025-07-14 23:35:44,989 - data_collection.reddit.reddit_collector - INFO - Collected 103 posts from r/CryptoCurrency
+2025-07-14 23:35:45,314 - data_collection.news.news_collector - INFO - Total news articles collected: 95
+2025-07-14 23:35:45,319 - data_collection.collector - INFO - Saved 95 news articles to data\collection_20250714_233538\news_20250714_233545.json
+2025-07-14 23:35:45,438 - data_collection.financial.market_data_collector - WARNING - No data found for DIA
+2025-07-14 23:35:45,540 - data_collection.financial.market_data_collector - INFO - Collected current market data for 5 symbols
+2025-07-14 23:35:45,560 - data_collection.collector - INFO - Saved market data for 5 symbols
+2025-07-14 23:35:45,561 - data_collection.collector - INFO - Collecting historical market data (weekly update)
+2025-07-14 23:35:45,561 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-14 23:35:45,991 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-14 23:35:48,599 - data_collection.reddit.reddit_collector - INFO - Collected 130 posts from r/wallstreetbets
+2025-07-14 23:35:49,600 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-14 23:35:51,705 - data_collection.reddit.reddit_collector - INFO - Collected 164 posts from r/investing
+2025-07-14 23:35:52,706 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 164
+2025-07-14 23:35:52,720 - data_collection.collector - INFO - Saved 164 Reddit posts to data\collection_20250714_233538\reddit_20250714_233552.json
+2025-07-14 23:35:54,148 - data_collection.financial.market_data_collector - WARNING - CoinGecko API returned status code 429 for solana
+2025-07-14 23:35:57,693 - data_collection.financial.market_data_collector - WARNING - No historical data found for SOL in any format
+2025-07-14 23:35:58,415 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-14 23:35:59,293 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-14 23:36:00,178 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-14 23:36:01,084 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-14 23:36:01,991 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-14 23:36:02,907 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-14 23:36:03,795 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-14 23:36:04,662 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-14 23:36:04,864 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 4 symbols
+2025-07-14 23:36:04,877 - data_collection.collector - INFO - Saved historical data for 4 symbols
+2025-07-14 23:46:39,408 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:46:39,705 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-14 23:46:39,718 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-14 23:46:39,719 - sentiment_analysis.analyzer - INFO - Running sentiment analysis on data in data\collection_20250714_233538
+2025-07-14 23:46:39,726 - sentiment_analysis.analyzer - INFO - Analyzing sentiment for 259 text items
+2025-07-14 23:46:41,492 - sentiment_analysis.analyzer - INFO - Sentiment analysis complete. Results saved to data\sentiment_20250714_234639
+2025-07-14 23:46:41,492 - sentiment_analysis.analyzer - INFO - Fear & Greed Index: 66.12 - Greed
+2025-07-14 23:46:41,492 - FearGreedEngine - INFO - Sentiment analysis completed
+2025-07-14 23:48:40,456 - signal_generation.correlation_engine - INFO - Calculating correlations between sentiment (data\sentiment_YYYYMMDD_HHMMSS) and market data (data\collection_YYYYMMDD_HHMMSS)
+2025-07-14 23:48:40,457 - signal_generation.correlation_engine - ERROR - Required sentiment files not found in data\sentiment_YYYYMMDD_HHMMSS
+2025-07-14 23:48:40,457 - signal_generation.signal_generator - INFO - Generating signals from sentiment data in data\sentiment_YYYYMMDD_HHMMSS
+2025-07-14 23:48:40,457 - signal_generation.signal_generator - ERROR - Required sentiment files not found in data\sentiment_YYYYMMDD_HHMMSS
+2025-07-14 23:48:40,458 - FearGreedEngine - INFO - Signal generation completed

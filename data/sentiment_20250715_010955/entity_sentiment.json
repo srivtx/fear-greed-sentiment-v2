@@ -1,0 +1,177 @@
+{
+  "cryptos": {
+    "BTC": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "ETH": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "XRP": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "ADA": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "SOL": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    }
+  },
+  "stocks": {
+    "AAPL": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "MSFT": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "GOOGL": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "AMZN": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "TSLA": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    }
+  },
+  "indices": {
+    "SPY": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "QQQ": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "DIA": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    }
+  }
+}

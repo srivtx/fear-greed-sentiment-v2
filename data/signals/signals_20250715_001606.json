@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-07-15T00:16:06.905271",
+  "entity_signals": {
+    "cryptos": {
+      "ETH": {
+        "signal_type": "SELL",
+        "confidence": 1.0,
+        "strength": 0.3840796651451915,
+        "sentiment_score": 0.3840796651451915,
+        "mention_count": 23,
+        "position_size": 0.046000000000000006,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      },
+      "SOL": {
+        "signal_type": "SELL",
+        "confidence": 0.8939848376201126,
+        "strength": 0.4213030085735585,
+        "sentiment_score": 0.4213030085735585,
+        "mention_count": 6,
+        "position_size": 0.010727818051441351,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      },
+      "DOGE": {
+        "signal_type": "SELL",
+        "confidence": 0.7549833694261363,
+        "strength": 0.39330007218560603,
+        "sentiment_score": 0.39330007218560603,
+        "mention_count": 4,
+        "position_size": 0.006039866955409091,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      }
+    },
+    "stocks": {
+      "AMZN": {
+        "signal_type": "SELL",
+        "confidence": 0.9305102903310606,
+        "strength": 0.3800681997097404,
+        "sentiment_score": 0.3800681997097404,
+        "mention_count": 7,
+        "position_size": 0.01302714406463485,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      },
+      "GOOGL": {
+        "signal_type": "BUY",
+        "confidence": 0.9333333333333333,
+        "strength": 0.6068543302811307,
+        "sentiment_score": 0.6068543302811307,
+        "mention_count": 4,
+        "position_size": 0.0074666666666666675,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      },
+      "NVDA": {
+        "signal_type": "SELL",
+        "confidence": 0.7170941208552175,
+        "strength": 0.3175215750437682,
+        "sentiment_score": 0.3175215750437682,
+        "mention_count": 4,
+        "position_size": 0.005736752966841741,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      },
+      "TSLA": {
+        "signal_type": "SELL",
+        "confidence": 0.721971147325393,
+        "strength": 0.3106089613174528,
+        "sentiment_score": 0.3106089613174528,
+        "mention_count": 4,
+        "position_size": 0.0057757691786031445,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      }
+    },
+    "indices": {
+      "SPY": {
+        "signal_type": "SELL",
+        "confidence": 0.8675715843862452,
+        "strength": 0.2684765021058238,
+        "sentiment_score": 0.2684765021058238,
+        "mention_count": 6,
+        "position_size": 0.010410859012634943,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      },
+      "QQQ": {
+        "signal_type": "BUY",
+        "confidence": 1.0,
+        "strength": 0.5432155134204841,
+        "sentiment_score": 0.5432155134204841,
+        "mention_count": 10,
+        "position_size": 0.020000000000000004,
+        "timestamp": "2025-07-15T00:16:06.905271",
+        "expiry": "2025-07-16T00:16:06.905271"
+      }
+    }
+  },
+  "fear_greed_index": 66.11603861835786,
+  "market_sentiment": "Greed"
+}

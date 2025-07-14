@@ -1,0 +1,194 @@
+{
+  "cryptos": {
+    "BTC": {
+      "compound": 0.1733529411764706,
+      "positive": 0.24311764705882352,
+      "negative": 0.06976470588235294,
+      "neutral": 0.6871176470588236,
+      "sentiment_label": "positive",
+      "mentions": 17,
+      "positive_count": 15,
+      "neutral_count": 1,
+      "negative_count": 1,
+      "sources": {
+        "reddit": 17
+      },
+      "confidence": 0.6833333333333333
+    },
+    "ETH": {
+      "compound": 0.1647241379310345,
+      "positive": 0.2414137931034483,
+      "negative": 0.0766896551724138,
+      "neutral": 0.6819999999999999,
+      "sentiment_label": "positive",
+      "mentions": 29,
+      "positive_count": 26,
+      "neutral_count": 0,
+      "negative_count": 3,
+      "sources": {
+        "reddit": 28,
+        "news": 1
+      },
+      "confidence": 0.8833333333333333
+    },
+    "XRP": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "ADA": {
+      "compound": 0.14475,
+      "positive": 0.187,
+      "negative": 0.042249999999999996,
+      "neutral": 0.77075,
+      "sentiment_label": "positive",
+      "mentions": 4,
+      "positive_count": 4,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 4
+      },
+      "confidence": 0.4666666666666667
+    },
+    "SOL": {
+      "compound": 0.14359999999999995,
+      "positive": 0.2275333333333333,
+      "negative": 0.08393333333333335,
+      "neutral": 0.6886,
+      "sentiment_label": "positive",
+      "mentions": 15,
+      "positive_count": 12,
+      "neutral_count": 1,
+      "negative_count": 2,
+      "sources": {
+        "reddit": 15
+      },
+      "confidence": 0.65
+    }
+  },
+  "stocks": {
+    "AAPL": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "MSFT": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "GOOGL": {
+      "compound": 0.31100000000000005,
+      "positive": 0.34600000000000003,
+      "negative": 0.034999999999999996,
+      "neutral": 0.6190000000000001,
+      "sentiment_label": "positive",
+      "mentions": 3,
+      "positive_count": 3,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 3
+      },
+      "confidence": 0.45
+    },
+    "AMZN": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "TSLA": {
+      "compound": 0.28200000000000003,
+      "positive": 0.314,
+      "negative": 0.032,
+      "neutral": 0.654,
+      "sentiment_label": "positive",
+      "mentions": 1,
+      "positive_count": 1,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.4166666666666667
+    }
+  },
+  "indices": {
+    "SPY": {
+      "compound": 0.0,
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 0.0,
+      "sentiment_label": "neutral",
+      "mentions": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "sources": {},
+      "confidence": 0.0
+    },
+    "QQQ": {
+      "compound": -0.132,
+      "positive": 0.0,
+      "negative": 0.132,
+      "neutral": 0.868,
+      "sentiment_label": "negative",
+      "mentions": 1,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 1,
+      "sources": {
+        "reddit": 1
+      },
+      "confidence": 0.4166666666666667
+    },
+    "DIA": {
+      "compound": 0.1316,
+      "positive": 0.2132,
+      "negative": 0.08159999999999999,
+      "neutral": 0.7048000000000001,
+      "sentiment_label": "positive",
+      "mentions": 5,
+      "positive_count": 4,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "sources": {
+        "reddit": 5
+      },
+      "confidence": 0.48333333333333334
+    }
+  }
+}

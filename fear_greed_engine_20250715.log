@@ -1,0 +1,661 @@
+2025-07-15 00:16:06,902 - signal_generation.correlation_engine - INFO - Calculating correlations between sentiment (data\sentiment_20250714_234639) and market data (data\collection_YYYYMMDD_HHMMSS)
+2025-07-15 00:16:06,904 - signal_generation.correlation_engine - ERROR - No market data found in data\collection_YYYYMMDD_HHMMSS
+2025-07-15 00:16:06,904 - signal_generation.signal_generator - INFO - Generating signals from sentiment data in data\sentiment_20250714_234639
+2025-07-15 00:16:06,906 - signal_generation.signal_generator - INFO - Generated 9 trading signals
+2025-07-15 00:16:06,906 - signal_generation.signal_generator - INFO - Signals saved to data\signals\signals_20250715_001606.json
+2025-07-15 00:16:06,907 - FearGreedEngine - INFO - Signal generation completed
+2025-07-15 00:46:53,215 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-15 00:46:53,444 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-15 00:46:53,445 - data_collection.news.news_collector - INFO - News API connection successful
+2025-07-15 00:46:53,447 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 00:46:53,744 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 00:46:53,759 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-15 00:46:53,762 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-15 00:46:53,762 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-15 00:46:53,762 - engine - INFO - Starting data collection
+2025-07-15 00:46:53,763 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-15 00:46:53,763 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-15 00:46:54,284 - data_collection.twitter.twitter_collector - WARNING - Twitter API rate limit reached. Skipping remaining queries.
+2025-07-15 00:46:54,284 - data_collection.twitter.twitter_collector - INFO - Total tweets collected: 0
+2025-07-15 00:46:54,285 - data_collection.collector - WARNING - No tweets collected
+2025-07-15 00:46:54,285 - data_collection.collector - WARNING - Twitter data collection produced no results, continuing with other sources
+2025-07-15 00:46:54,286 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-15 00:46:54,286 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-15 00:46:58,170 - data_collection.reddit.reddit_collector - INFO - Collected 56 posts from r/Bitcoin
+2025-07-15 00:46:59,171 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-15 00:47:02,039 - data_collection.reddit.reddit_collector - INFO - Collected 100 posts from r/CryptoCurrency
+2025-07-15 00:47:03,040 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-15 00:47:05,809 - data_collection.reddit.reddit_collector - INFO - Collected 127 posts from r/wallstreetbets
+2025-07-15 00:47:06,810 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-15 00:47:09,462 - data_collection.reddit.reddit_collector - INFO - Collected 162 posts from r/investing
+2025-07-15 00:47:10,463 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 162
+2025-07-15 00:47:10,475 - data_collection.collector - INFO - Saved 162 Reddit posts to data\collection_20250715_004653\reddit_20250715_004710.json
+2025-07-15 00:47:10,475 - data_collection.collector - INFO - Reddit data collection succeeded: data\collection_20250715_004653\reddit_20250715_004710.json
+2025-07-15 00:47:10,476 - data_collection.collector - INFO - Collecting News data
+2025-07-15 00:47:10,476 - data_collection.collector - ERROR - News data collection failed: 'NewsCollector' object has no attribute 'collect_news'
+2025-07-15 00:47:10,476 - data_collection.collector - INFO - Collecting Market data
+2025-07-15 00:47:10,476 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-15 00:47:11,124 - data_collection.financial.market_data_collector - INFO - Successfully collected data for 5 cryptocurrencies from CoinGecko
+2025-07-15 00:47:13,963 - data_collection.financial.market_data_collector - WARNING - Using mock data for AAPL
+2025-07-15 00:47:16,700 - data_collection.financial.market_data_collector - WARNING - Using mock data for MSFT
+2025-07-15 00:47:19,551 - data_collection.financial.market_data_collector - WARNING - Using mock data for GOOGL
+2025-07-15 00:47:22,471 - data_collection.financial.market_data_collector - WARNING - Using mock data for AMZN
+2025-07-15 00:47:25,283 - data_collection.financial.market_data_collector - WARNING - Using mock data for TSLA
+2025-07-15 00:47:26,733 - data_collection.financial.market_data_collector - WARNING - Using mock data for SPY
+2025-07-15 00:47:27,370 - data_collection.financial.market_data_collector - WARNING - Using mock data for QQQ
+2025-07-15 00:47:27,957 - data_collection.financial.market_data_collector - WARNING - Using mock data for DIA
+2025-07-15 00:47:27,959 - data_collection.financial.market_data_collector - INFO - Collected current market data for 13 symbols
+2025-07-15 00:47:27,972 - data_collection.collector - INFO - Saved market data for 13 symbols
+2025-07-15 00:47:27,973 - data_collection.collector - INFO - Market data collection succeeded: data\collection_20250715_004653\market_data_20250715_004727.csv
+2025-07-15 00:47:27,973 - data_collection.collector - INFO - Collecting historical market data
+2025-07-15 00:47:27,973 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-15 00:47:37,081 - data_collection.financial.market_data_collector - WARNING - CoinGecko API returned status code 429 for solana
+2025-07-15 00:47:39,518 - data_collection.financial.market_data_collector - WARNING - No historical data found for SOL in any format
+2025-07-15 00:47:40,662 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-15 00:47:40,680 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AAPL
+2025-07-15 00:47:41,836 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-15 00:47:41,839 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for MSFT
+2025-07-15 00:47:42,829 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-15 00:47:42,832 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for GOOGL
+2025-07-15 00:47:43,978 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-15 00:47:43,981 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AMZN
+2025-07-15 00:47:46,420 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-15 00:47:46,422 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for TSLA
+2025-07-15 00:47:47,786 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-15 00:47:47,789 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for SPY
+2025-07-15 00:47:49,226 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-15 00:47:49,228 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for QQQ
+2025-07-15 00:47:50,618 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-15 00:47:50,621 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for DIA
+2025-07-15 00:47:50,623 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 12 symbols
+2025-07-15 00:47:50,670 - data_collection.collector - INFO - Saved historical data for 12 symbols
+2025-07-15 00:47:50,671 - data_collection.collector - INFO - Historical market data collection succeeded: data\collection_20250715_004653\market_history_20250715_004750.csv
+2025-07-15 00:47:50,671 - engine - INFO - Starting sentiment analysis
+2025-07-15 00:47:50,671 - sentiment_analysis.analyzer - INFO - Running sentiment analysis on data in data\collection_20250715_004653
+2025-07-15 00:47:50,676 - sentiment_analysis.analyzer - INFO - Analyzing sentiment for 162 text items
+2025-07-15 00:47:52,344 - sentiment_analysis.analyzer - INFO - Sentiment analysis complete. Results saved to data\sentiment_20250715_004750
+2025-07-15 00:47:52,344 - sentiment_analysis.analyzer - INFO - Fear & Greed Index: 61.58 - Greed
+2025-07-15 00:47:52,345 - engine - INFO - Generating visualizations
+2025-07-15 00:47:52,345 - engine - ERROR - Error generating visualizations: expected str, bytes or os.PathLike object, not dict
+2025-07-15 00:47:52,347 - engine - INFO - Starting signal generation
+2025-07-15 00:47:52,347 - engine - ERROR - Error in engine cycle: SignalGenerator.generate_signals() got an unexpected keyword argument 'collection_dir'
+2025-07-15 00:47:52,347 - FearGreedEngine - ERROR - Error in engine run: SignalGenerator.generate_signals() got an unexpected keyword argument 'collection_dir'
+2025-07-15 00:57:13,076 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-15 00:57:13,078 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-15 00:57:13,078 - data_collection.news.news_collector - INFO - News API connection successful
+2025-07-15 00:57:13,081 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 00:57:13,308 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 00:57:13,326 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-15 00:57:13,327 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-15 00:57:13,328 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-15 00:57:13,328 - engine - INFO - Starting data collection
+2025-07-15 00:57:13,328 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-15 00:57:13,328 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-15 00:57:13,814 - data_collection.twitter.twitter_collector - WARNING - Twitter API rate limit reached. Skipping remaining queries.
+2025-07-15 00:57:13,815 - data_collection.twitter.twitter_collector - INFO - Total tweets collected: 0
+2025-07-15 00:57:13,816 - data_collection.collector - WARNING - No tweets collected
+2025-07-15 00:57:13,817 - data_collection.collector - WARNING - Twitter data collection produced no results, continuing with other sources
+2025-07-15 00:57:13,817 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-15 00:57:13,817 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-15 00:57:18,278 - data_collection.reddit.reddit_collector - INFO - Collected 56 posts from r/Bitcoin
+2025-07-15 00:57:19,279 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-15 00:57:22,260 - data_collection.reddit.reddit_collector - INFO - Collected 100 posts from r/CryptoCurrency
+2025-07-15 00:57:23,261 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-15 00:57:27,004 - data_collection.reddit.reddit_collector - INFO - Collected 127 posts from r/wallstreetbets
+2025-07-15 00:57:28,005 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-15 00:57:30,785 - data_collection.reddit.reddit_collector - INFO - Collected 162 posts from r/investing
+2025-07-15 00:57:31,786 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 162
+2025-07-15 00:57:31,798 - data_collection.collector - INFO - Saved 162 Reddit posts to data\collection_20250715_005713\reddit_20250715_005731.json
+2025-07-15 00:57:31,798 - data_collection.collector - INFO - Reddit data collection succeeded: data\collection_20250715_005713\reddit_20250715_005731.json
+2025-07-15 00:57:31,799 - data_collection.collector - INFO - Collecting News data
+2025-07-15 00:57:50,608 - data_collection.news.news_collector - INFO - Total news articles collected: 5
+2025-07-15 00:57:50,612 - data_collection.collector - INFO - Saved 5 news articles to data\collection_20250715_005713\news_20250715_005750.json
+2025-07-15 00:57:50,612 - data_collection.collector - INFO - News data collection succeeded: data\collection_20250715_005713\news_20250715_005750.json
+2025-07-15 00:57:50,612 - data_collection.collector - INFO - Collecting Market data
+2025-07-15 00:57:50,613 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-15 00:57:51,256 - data_collection.financial.market_data_collector - INFO - Successfully collected data for 5 cryptocurrencies from CoinGecko
+2025-07-15 00:57:52,466 - data_collection.financial.market_data_collector - WARNING - Using mock data for AAPL
+2025-07-15 00:57:53,556 - data_collection.financial.market_data_collector - WARNING - Using mock data for MSFT
+2025-07-15 00:57:54,833 - data_collection.financial.market_data_collector - WARNING - Using mock data for GOOGL
+2025-07-15 00:57:55,989 - data_collection.financial.market_data_collector - WARNING - Using mock data for AMZN
+2025-07-15 00:57:57,126 - data_collection.financial.market_data_collector - WARNING - Using mock data for TSLA
+2025-07-15 00:57:57,736 - data_collection.financial.market_data_collector - WARNING - Using mock data for SPY
+2025-07-15 00:57:58,336 - data_collection.financial.market_data_collector - WARNING - Using mock data for QQQ
+2025-07-15 00:57:58,905 - data_collection.financial.market_data_collector - WARNING - Using mock data for DIA
+2025-07-15 00:57:58,907 - data_collection.financial.market_data_collector - INFO - Collected current market data for 13 symbols
+2025-07-15 00:57:58,919 - data_collection.collector - INFO - Saved market data for 13 symbols
+2025-07-15 00:57:58,919 - data_collection.collector - INFO - Market data collection succeeded: data\collection_20250715_005713\market_data_20250715_005758.csv
+2025-07-15 00:57:58,919 - data_collection.collector - INFO - Collecting historical market data
+2025-07-15 00:57:58,920 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-15 00:58:21,044 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-15 00:58:21,047 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AAPL
+2025-07-15 00:58:23,894 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-15 00:58:23,897 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for MSFT
+2025-07-15 00:58:26,659 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-15 00:58:26,663 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for GOOGL
+2025-07-15 00:58:29,435 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-15 00:58:29,439 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AMZN
+2025-07-15 00:58:32,187 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-15 00:58:32,189 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for TSLA
+2025-07-15 00:58:33,565 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-15 00:58:33,568 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for SPY
+2025-07-15 00:58:34,949 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-15 00:58:34,952 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for QQQ
+2025-07-15 00:58:36,321 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-15 00:58:36,329 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for DIA
+2025-07-15 00:58:36,331 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 13 symbols
+2025-07-15 00:58:36,366 - data_collection.collector - INFO - Saved historical data for 13 symbols
+2025-07-15 00:58:36,367 - data_collection.collector - INFO - Historical market data collection succeeded: data\collection_20250715_005713\market_history_20250715_005836.csv
+2025-07-15 00:58:36,367 - engine - INFO - Starting sentiment analysis
+2025-07-15 00:58:36,367 - sentiment_analysis.analyzer - INFO - Running sentiment analysis on data in data\collection_20250715_005713
+2025-07-15 00:58:36,370 - sentiment_analysis.analyzer - INFO - Analyzing sentiment for 167 text items
+2025-07-15 00:58:38,110 - sentiment_analysis.analyzer - INFO - Sentiment analysis complete. Results saved to data\sentiment_20250715_005836
+2025-07-15 00:58:38,110 - sentiment_analysis.analyzer - INFO - Fear & Greed Index: 61.93 - Greed
+2025-07-15 00:58:38,111 - engine - INFO - Generating visualizations
+2025-07-15 00:58:38,111 - engine - ERROR - Invalid sentiment directory format: {'results_dir': WindowsPath('data/sentiment_20250715_005836'), 'entity_sentiment': {'cryptos': {'BTC': {'sentiment_score': 0.17839402164651816, 'sentiment_label': 'neutral', 'mention_count': 44, 'positive_count': 31, 'neutral_count': 8, 'negative_count': 5, 'sources': {'reddit': 44}, 'confidence': 0.7780303030303031}, 'DOT': {'sentiment_score': 0.3170948019924249, 'sentiment_label': 'positive', 'mention_count': 1, 'positive_count': 1, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 1}, 'confidence': 0.41666666666666663}, 'ADA': {'sentiment_score': 0.3649145577, 'sentiment_label': 'positive', 'mention_count': 1, 'positive_count': 1, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 1}, 'confidence': 0.41666666666666663}, 'ETH': {'sentiment_score': 0.21738858346247078, 'sentiment_label': 'positive', 'mention_count': 10, 'positive_count': 8, 'neutral_count': 2, 'negative_count': 0, 'sources': {'reddit': 10}, 'confidence': 0.8066666666666666}, 'SOL': {'sentiment_score': 0.2319672499046966, 'sentiment_label': 'positive', 'mention_count': 3, 'positive_count': 2, 'neutral_count': 1, 'negative_count': 0, 'sources': {'reddit': 3}, 'confidence': 0.41666666666666663}, 'AVAX': {'sentiment_score': 0.25712264991408973, 'sentiment_label': 'positive', 'mention_count': 1, 'positive_count': 1, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 1}, 'confidence': 0.41666666666666663}, 'BNB': {'sentiment_score': 0.18877674074074072, 'sentiment_label': 'neutral', 'mention_count': 2, 'positive_count': 1, 'neutral_count': 1, 'negative_count': 0, 'sources': {'reddit': 2}, 'confidence': 0.31666666666666665}, 'DOGE': {'sentiment_score': -0.05175, 'sentiment_label': 'neutral', 'mention_count': 1, 'positive_count': 0, 'neutral_count': 1, 'negative_count': 0, 'sources': {'reddit': 1}, 'confidence': 0.41666666666666663}}, 'stocks': {'AAPL': {'sentiment_score': 0.37800569356226127, 'sentiment_label': 'positive', 'mention_count': 2, 'positive_count': 2, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 2}, 'confidence': 0.4666666666666667}, 'V': {'sentiment_score': 0.3170948019924249, 'sentiment_label': 'positive', 'mention_count': 1, 'positive_count': 1, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 1}, 'confidence': 0.41666666666666663}, 'GOOGL': {'sentiment_score': 0.34915722737484084, 'sentiment_label': 'positive', 'mention_count': 3, 'positive_count': 3, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 3}, 'confidence': 0.5166666666666666}, 'AMZN': {'sentiment_score': 0.286435970533586, 'sentiment_label': 'positive', 'mention_count': 6, 'positive_count': 6, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 6}, 'confidence': 0.6666666666666666}, 'FB': {'sentiment_score': 0.26193729832787105, 'sentiment_label': 'positive', 'mention_count': 2, 'positive_count': 2, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 2}, 'confidence': 0.4666666666666667}, 'NVDA': {'sentiment_score': 0.27236158189169096, 'sentiment_label': 'positive', 'mention_count': 3, 'positive_count': 2, 'neutral_count': 1, 'negative_count': 0, 'sources': {'reddit': 3}, 'confidence': 0.41666666666666663}, 'TSLA': {'sentiment_score': 0.3106089613174528, 'sentiment_label': 'positive', 'mention_count': 4, 'positive_count': 4, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 4}, 'confidence': 0.5666666666666667}}, 'indices': {'IWM': {'sentiment_score': 0.3170948019924249, 'sentiment_label': 'positive', 'mention_count': 1, 'positive_count': 1, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 1}, 'confidence': 0.41666666666666663}, 'SPY': {'sentiment_score': 0.2415615459707386, 'sentiment_label': 'positive', 'mention_count': 5, 'positive_count': 5, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 5}, 'confidence': 0.6166666666666667}, 'QQQ': {'sentiment_score': 0.36645560663015386, 'sentiment_label': 'positive', 'mention_count': 4, 'positive_count': 4, 'neutral_count': 0, 'negative_count': 0, 'sources': {'reddit': 4}, 'confidence': 0.5666666666666667}}}, 'general_sentiment': {'positive': 100, 'neutral': 47, 'negative': 15, 'total': 162, 'avg_sentiment': 0.15888553590070162}, 'fear_greed_index': {'timestamp': '2025-07-15T00:58:38.107070', 'fear_greed_index': 61.92909672395224, 'market_sentiment': 'Greed', 'base_sentiment': 0.15888553590070162, 'general_positive': 100, 'general_neutral': 47, 'general_negative': 15, 'total_mentions': 162}}
+2025-07-15 00:58:38,112 - engine - INFO - Starting signal generation
+2025-07-15 00:58:38,113 - engine - ERROR - Error in engine cycle: SignalGenerator.generate_signals() got an unexpected keyword argument 'collection_dir'
+2025-07-15 00:58:38,113 - FearGreedEngine - ERROR - Error in engine run: SignalGenerator.generate_signals() got an unexpected keyword argument 'collection_dir'
+2025-07-15 01:08:32,409 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-15 01:08:32,410 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-15 01:08:32,410 - data_collection.news.news_collector - INFO - News API connection successful
+2025-07-15 01:08:32,415 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 01:08:32,677 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-15 01:08:32,679 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 01:08:32,682 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-15 01:08:32,683 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-15 01:08:32,683 - engine - INFO - Starting data collection
+2025-07-15 01:08:32,683 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-15 01:08:32,683 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-15 01:08:33,219 - data_collection.twitter.twitter_collector - WARNING - Twitter API rate limit reached. Skipping remaining queries.
+2025-07-15 01:08:33,220 - data_collection.twitter.twitter_collector - INFO - Total tweets collected: 0
+2025-07-15 01:08:33,221 - data_collection.collector - WARNING - No tweets collected
+2025-07-15 01:08:33,221 - data_collection.collector - WARNING - Twitter data collection produced no results, continuing with other sources
+2025-07-15 01:08:33,221 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-15 01:08:33,221 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-15 01:08:36,904 - data_collection.reddit.reddit_collector - INFO - Collected 56 posts from r/Bitcoin
+2025-07-15 01:08:37,914 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-15 01:08:40,983 - data_collection.reddit.reddit_collector - INFO - Collected 100 posts from r/CryptoCurrency
+2025-07-15 01:08:41,984 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-15 01:08:45,177 - data_collection.reddit.reddit_collector - INFO - Collected 127 posts from r/wallstreetbets
+2025-07-15 01:08:46,178 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-15 01:08:49,333 - data_collection.reddit.reddit_collector - INFO - Collected 162 posts from r/investing
+2025-07-15 01:08:50,334 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 162
+2025-07-15 01:08:50,346 - data_collection.collector - INFO - Saved 162 Reddit posts to data\collection_20250715_010832\reddit_20250715_010850.json
+2025-07-15 01:08:50,346 - data_collection.collector - INFO - Reddit data collection succeeded: data\collection_20250715_010832\reddit_20250715_010850.json
+2025-07-15 01:08:50,346 - data_collection.collector - INFO - Collecting News data
+2025-07-15 01:09:07,381 - data_collection.news.news_collector - INFO - Total news articles collected: 5
+2025-07-15 01:09:07,385 - data_collection.collector - INFO - Saved 5 news articles to data\collection_20250715_010832\news_20250715_010907.json
+2025-07-15 01:09:07,385 - data_collection.collector - INFO - News data collection succeeded: data\collection_20250715_010832\news_20250715_010907.json
+2025-07-15 01:09:07,385 - data_collection.collector - INFO - Collecting Market data
+2025-07-15 01:09:07,385 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-15 01:09:08,083 - data_collection.financial.market_data_collector - INFO - Successfully collected data for 5 cryptocurrencies from CoinGecko
+2025-07-15 01:09:09,588 - data_collection.financial.market_data_collector - WARNING - Using mock data for AAPL
+2025-07-15 01:09:10,762 - data_collection.financial.market_data_collector - WARNING - Using mock data for MSFT
+2025-07-15 01:09:12,072 - data_collection.financial.market_data_collector - WARNING - Using mock data for GOOGL
+2025-07-15 01:09:23,090 - data_collection.financial.market_data_collector - WARNING - Using mock data for AMZN
+2025-07-15 01:09:24,288 - data_collection.financial.market_data_collector - WARNING - Using mock data for TSLA
+2025-07-15 01:09:24,827 - data_collection.financial.market_data_collector - WARNING - Using mock data for SPY
+2025-07-15 01:09:25,325 - data_collection.financial.market_data_collector - WARNING - Using mock data for QQQ
+2025-07-15 01:09:25,856 - data_collection.financial.market_data_collector - WARNING - Using mock data for DIA
+2025-07-15 01:09:25,858 - data_collection.financial.market_data_collector - INFO - Collected current market data for 13 symbols
+2025-07-15 01:09:25,871 - data_collection.collector - INFO - Saved market data for 13 symbols
+2025-07-15 01:09:25,871 - data_collection.collector - INFO - Market data collection succeeded: data\collection_20250715_010832\market_data_20250715_010925.csv
+2025-07-15 01:09:25,871 - data_collection.collector - INFO - Collecting historical market data
+2025-07-15 01:09:25,871 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-15 01:09:34,441 - data_collection.financial.market_data_collector - WARNING - CoinGecko API returned status code 429 for solana
+2025-07-15 01:09:36,788 - data_collection.financial.market_data_collector - WARNING - No historical data found for SOL in any format
+2025-07-15 01:09:38,024 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-15 01:09:38,028 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AAPL
+2025-07-15 01:09:39,192 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-15 01:09:39,194 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for MSFT
+2025-07-15 01:09:40,183 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-15 01:09:40,184 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for GOOGL
+2025-07-15 01:09:41,289 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-15 01:09:41,291 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AMZN
+2025-07-15 01:09:42,370 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-15 01:09:42,374 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for TSLA
+2025-07-15 01:09:42,989 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-15 01:09:42,993 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for SPY
+2025-07-15 01:09:53,963 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-15 01:09:53,966 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for QQQ
+2025-07-15 01:09:55,318 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-15 01:09:55,324 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for DIA
+2025-07-15 01:09:55,326 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 12 symbols
+2025-07-15 01:09:55,361 - data_collection.collector - INFO - Saved historical data for 12 symbols
+2025-07-15 01:09:55,361 - data_collection.collector - INFO - Historical market data collection succeeded: data\collection_20250715_010832\market_history_20250715_010955.csv
+2025-07-15 01:09:55,362 - engine - INFO - Starting sentiment analysis
+2025-07-15 01:09:55,362 - sentiment_analysis.analyzer - INFO - Running sentiment analysis on data in data\collection_20250715_010832
+2025-07-15 01:09:55,366 - sentiment_analysis.analyzer - INFO - Analyzing sentiment for 167 text items
+2025-07-15 01:09:55,366 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,367 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,367 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,368 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,368 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,368 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,369 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,369 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,369 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,369 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,370 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,370 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,370 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,370 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,371 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,371 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,371 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,371 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,371 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,372 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,373 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,373 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,373 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,374 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,374 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,374 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,375 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,375 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,375 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,376 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,376 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,376 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,376 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,376 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,377 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,377 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,377 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,377 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,377 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,378 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,380 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,380 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,380 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,381 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,381 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,381 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,381 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,382 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,382 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,382 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,382 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,382 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,382 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,383 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,383 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,383 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,383 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,383 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,384 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,384 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,384 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,384 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,384 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,384 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,385 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,385 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,385 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,385 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,385 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,386 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,386 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,386 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,386 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,386 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,387 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,387 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,387 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,387 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,388 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,389 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,390 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,391 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,395 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,395 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,395 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,395 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,397 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,398 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,398 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,398 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,398 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,398 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,398 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,399 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,401 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,402 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,402 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,402 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,402 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,402 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,403 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,403 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,403 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,403 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,406 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,406 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,406 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'TextPreprocessor' object has no attribute 'preprocess'
+2025-07-15 01:09:55,421 - sentiment_analysis.analyzer - INFO - Sentiment analysis complete. Results saved to data\sentiment_20250715_010955
+2025-07-15 01:09:55,421 - sentiment_analysis.analyzer - INFO - Fear & Greed Index: 25.00 - Fear
+2025-07-15 01:09:55,422 - engine - INFO - Generating visualizations
+2025-07-15 01:09:55,877 - matplotlib.text - WARNING - posx and posy should be finite values
+2025-07-15 01:09:56,007 - utils.visualization - INFO - Fear & Greed gauge saved to data\visualizations\fear_greed_gauge_20250715_010955.png
+2025-07-15 01:09:56,008 - engine - INFO - Generated Fear & Greed gauge: data\visualizations\fear_greed_gauge_20250715_010955.png
+2025-07-15 01:09:56,395 - utils.visualization - INFO - Sentiment trend chart saved to data\visualizations\sentiment_trend_20250715_010956.png
+2025-07-15 01:09:56,396 - engine - INFO - Generated sentiment trend chart: data\visualizations\sentiment_trend_20250715_010956.png
+2025-07-15 01:09:56,396 - engine - ERROR - Error generating visualizations: 'sentiment_score'
+2025-07-15 01:09:56,397 - engine - INFO - Starting signal generation
+2025-07-15 01:09:56,398 - signal_generation.signal_generator - INFO - Generating signals from sentiment data in data\sentiment_20250715_010955
+2025-07-15 01:09:56,398 - signal_generation.correlation_engine - INFO - Calculating correlations between sentiment (data\sentiment_20250715_010955) and market data (data\collection_YYYYMMDD_HHMMSS)
+2025-07-15 01:09:56,400 - signal_generation.correlation_engine - ERROR - No market data found in data\collection_YYYYMMDD_HHMMSS
+2025-07-15 01:09:56,402 - signal_generation.signal_generator - INFO - Generated 0 trading signals
+2025-07-15 01:09:56,402 - signal_generation.signal_generator - INFO - Signals saved to data\signals\signals_20250715_010956.json
+2025-07-15 01:09:56,402 - FearGreedEngine - INFO - Engine run completed successfully
+2025-07-15 01:17:32,470 - data_collection.twitter.twitter_collector - INFO - Twitter API connected using Bearer Token
+2025-07-15 01:17:32,472 - data_collection.reddit.reddit_collector - INFO - Reddit API connection successful
+2025-07-15 01:17:32,473 - data_collection.news.news_collector - INFO - News API connection successful
+2025-07-15 01:17:32,473 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 01:17:32,700 - sentiment_analysis.sentiment_analyzer - INFO - Financial lexicon loaded and applied to VADER
+2025-07-15 01:17:32,701 - sentiment_analysis.preprocessor - INFO - Downloading required NLTK resources...
+2025-07-15 01:17:32,703 - FearGreedEngine - INFO - Running one cycle of Fear & Greed Engine
+2025-07-15 01:17:32,703 - engine - INFO - Running one complete cycle of the Fear & Greed Engine
+2025-07-15 01:17:32,703 - engine - INFO - Starting data collection
+2025-07-15 01:17:32,703 - data_collection.collector - INFO - Starting data collection cycle
+2025-07-15 01:17:32,704 - data_collection.collector - INFO - Collecting Twitter data
+2025-07-15 01:17:33,213 - data_collection.twitter.twitter_collector - WARNING - Twitter API rate limit reached. Skipping remaining queries.
+2025-07-15 01:17:33,213 - data_collection.twitter.twitter_collector - INFO - Total tweets collected: 0
+2025-07-15 01:17:33,214 - data_collection.collector - WARNING - No tweets collected
+2025-07-15 01:17:33,214 - data_collection.collector - WARNING - Twitter data collection produced no results, continuing with other sources
+2025-07-15 01:17:33,214 - data_collection.collector - INFO - Collecting Reddit data
+2025-07-15 01:17:33,215 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/Bitcoin
+2025-07-15 01:17:37,287 - data_collection.reddit.reddit_collector - INFO - Collected 56 posts from r/Bitcoin
+2025-07-15 01:17:38,287 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/CryptoCurrency
+2025-07-15 01:17:41,228 - data_collection.reddit.reddit_collector - INFO - Collected 100 posts from r/CryptoCurrency
+2025-07-15 01:17:42,230 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/wallstreetbets
+2025-07-15 01:17:45,182 - data_collection.reddit.reddit_collector - INFO - Collected 127 posts from r/wallstreetbets
+2025-07-15 01:17:46,184 - data_collection.reddit.reddit_collector - INFO - Collecting posts from r/investing
+2025-07-15 01:17:48,870 - data_collection.reddit.reddit_collector - INFO - Collected 162 posts from r/investing
+2025-07-15 01:17:49,871 - data_collection.reddit.reddit_collector - INFO - Total Reddit posts collected: 162
+2025-07-15 01:17:49,883 - data_collection.collector - INFO - Saved 162 Reddit posts to data\collection_20250715_011732\reddit_20250715_011749.json
+2025-07-15 01:17:49,883 - data_collection.collector - INFO - Reddit data collection succeeded: data\collection_20250715_011732\reddit_20250715_011749.json
+2025-07-15 01:17:49,883 - data_collection.collector - INFO - Collecting News data
+2025-07-15 01:18:07,024 - data_collection.news.news_collector - INFO - Total news articles collected: 5
+2025-07-15 01:18:07,028 - data_collection.collector - INFO - Saved 5 news articles to data\collection_20250715_011732\news_20250715_011807.json
+2025-07-15 01:18:07,028 - data_collection.collector - INFO - News data collection succeeded: data\collection_20250715_011732\news_20250715_011807.json
+2025-07-15 01:18:07,029 - data_collection.collector - INFO - Collecting Market data
+2025-07-15 01:18:07,029 - data_collection.financial.market_data_collector - INFO - Collecting current market data
+2025-07-15 01:18:07,743 - data_collection.financial.market_data_collector - INFO - Successfully collected data for 5 cryptocurrencies from CoinGecko
+2025-07-15 01:18:08,831 - data_collection.financial.market_data_collector - WARNING - Using mock data for AAPL
+2025-07-15 01:18:09,841 - data_collection.financial.market_data_collector - WARNING - Using mock data for MSFT
+2025-07-15 01:18:10,982 - data_collection.financial.market_data_collector - WARNING - Using mock data for GOOGL
+2025-07-15 01:18:12,123 - data_collection.financial.market_data_collector - WARNING - Using mock data for AMZN
+2025-07-15 01:18:13,263 - data_collection.financial.market_data_collector - WARNING - Using mock data for TSLA
+2025-07-15 01:18:13,826 - data_collection.financial.market_data_collector - WARNING - Using mock data for SPY
+2025-07-15 01:18:14,489 - data_collection.financial.market_data_collector - WARNING - Using mock data for QQQ
+2025-07-15 01:18:15,074 - data_collection.financial.market_data_collector - WARNING - Using mock data for DIA
+2025-07-15 01:18:15,077 - data_collection.financial.market_data_collector - INFO - Collected current market data for 13 symbols
+2025-07-15 01:18:15,099 - data_collection.collector - INFO - Saved market data for 13 symbols
+2025-07-15 01:18:15,099 - data_collection.collector - INFO - Market data collection succeeded: data\collection_20250715_011732\market_data_20250715_011815.csv
+2025-07-15 01:18:15,100 - data_collection.collector - INFO - Collecting historical market data
+2025-07-15 01:18:15,100 - data_collection.financial.market_data_collector - INFO - Collecting historical market data for period: 1y
+2025-07-15 01:18:23,688 - data_collection.financial.market_data_collector - WARNING - CoinGecko API returned status code 429 for solana
+2025-07-15 01:18:26,059 - data_collection.financial.market_data_collector - WARNING - No historical data found for SOL in any format
+2025-07-15 01:18:27,115 - data_collection.financial.market_data_collector - WARNING - No historical data found for AAPL
+2025-07-15 01:18:27,117 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AAPL
+2025-07-15 01:18:28,281 - data_collection.financial.market_data_collector - WARNING - No historical data found for MSFT
+2025-07-15 01:18:28,283 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for MSFT
+2025-07-15 01:18:29,388 - data_collection.financial.market_data_collector - WARNING - No historical data found for GOOGL
+2025-07-15 01:18:29,391 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for GOOGL
+2025-07-15 01:18:30,603 - data_collection.financial.market_data_collector - WARNING - No historical data found for AMZN
+2025-07-15 01:18:30,605 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for AMZN
+2025-07-15 01:18:31,725 - data_collection.financial.market_data_collector - WARNING - No historical data found for TSLA
+2025-07-15 01:18:31,728 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for TSLA
+2025-07-15 01:18:32,286 - data_collection.financial.market_data_collector - WARNING - No historical data found for SPY
+2025-07-15 01:18:32,289 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for SPY
+2025-07-15 01:18:32,878 - data_collection.financial.market_data_collector - WARNING - No historical data found for QQQ
+2025-07-15 01:18:32,881 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for QQQ
+2025-07-15 01:18:33,434 - data_collection.financial.market_data_collector - WARNING - No historical data found for DIA
+2025-07-15 01:18:33,437 - data_collection.financial.market_data_collector - WARNING - Using mock historical data for DIA
+2025-07-15 01:18:33,440 - data_collection.financial.market_data_collector - INFO - Collected historical market data for 12 symbols
+2025-07-15 01:18:33,473 - data_collection.collector - INFO - Saved historical data for 12 symbols
+2025-07-15 01:18:33,474 - data_collection.collector - INFO - Historical market data collection succeeded: data\collection_20250715_011732\market_history_20250715_011833.csv
+2025-07-15 01:18:33,475 - engine - INFO - Starting sentiment analysis
+2025-07-15 01:18:33,475 - sentiment_analysis.analyzer - INFO - Running sentiment analysis on data in data\collection_20250715_011732
+2025-07-15 01:18:33,491 - sentiment_analysis.analyzer - INFO - Analyzing sentiment for 167 text items
+2025-07-15 01:18:34,402 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,403 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,404 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,405 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,406 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,406 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,406 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,407 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,407 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,409 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,410 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,410 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,410 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,412 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,412 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,412 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,413 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,413 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,413 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,425 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,426 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,427 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,428 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,428 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,429 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,429 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,429 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,429 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,430 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,430 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,431 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,434 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,435 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,436 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,436 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,436 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,436 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,437 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,438 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,439 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,440 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,440 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,440 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,441 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,442 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,443 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,443 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,444 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,444 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,445 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,448 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,448 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,449 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,449 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,450 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,450 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,450 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,451 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,452 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,452 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,453 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,453 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,454 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,454 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,466 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,466 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,467 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,467 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,468 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,469 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,470 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,471 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,474 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,474 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,476 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,479 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,480 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,481 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,481 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,481 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,482 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,486 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,486 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,487 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,487 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,488 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,489 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,490 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,490 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,491 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,491 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,494 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,495 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,497 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,497 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,498 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,498 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,498 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,507 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,508 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,508 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,509 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,509 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,509 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,509 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,510 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,510 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,511 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,511 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,511 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,512 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,512 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,513 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,514 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,515 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,515 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,516 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,517 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,518 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,518 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,519 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,520 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,521 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,522 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,522 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,524 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,525 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,526 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,527 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,527 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,528 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,528 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,529 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,530 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,531 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,533 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,534 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,535 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,536 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,537 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,538 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,539 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,539 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,540 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,542 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,543 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,544 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,545 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,546 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,546 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,547 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,548 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,549 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,550 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,551 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,551 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,552 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,553 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,553 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,555 - sentiment_analysis.analyzer - ERROR - Error analyzing sentiment for text: 'SentimentAnalyzer' object has no attribute 'analyze'
+2025-07-15 01:18:34,560 - sentiment_analysis.analyzer - INFO - Sentiment analysis complete. Results saved to data\sentiment_20250715_011833
+2025-07-15 01:18:34,560 - sentiment_analysis.analyzer - INFO - Fear & Greed Index: 25.00 - Fear
+2025-07-15 01:18:34,561 - engine - INFO - Generating visualizations
+2025-07-15 01:18:34,848 - matplotlib.text - WARNING - posx and posy should be finite values
+2025-07-15 01:18:34,977 - utils.visualization - INFO - Fear & Greed gauge saved to data\visualizations\fear_greed_gauge_20250715_011834.png
+2025-07-15 01:18:34,978 - engine - INFO - Generated Fear & Greed gauge: data\visualizations\fear_greed_gauge_20250715_011834.png
+2025-07-15 01:18:35,350 - utils.visualization - INFO - Sentiment trend chart saved to data\visualizations\sentiment_trend_20250715_011835.png
+2025-07-15 01:18:35,350 - engine - INFO - Generated sentiment trend chart: data\visualizations\sentiment_trend_20250715_011835.png
+2025-07-15 01:18:35,351 - engine - ERROR - Error generating visualizations: 'sentiment_score'
+2025-07-15 01:18:35,352 - engine - INFO - Starting signal generation
+2025-07-15 01:18:35,353 - signal_generation.signal_generator - INFO - Generating signals from sentiment data in data\sentiment_20250715_011833
+2025-07-15 01:18:35,353 - signal_generation.correlation_engine - INFO - Calculating correlations between sentiment (data\sentiment_20250715_011833) and market data (data\collection_YYYYMMDD_HHMMSS)
+2025-07-15 01:18:35,353 - signal_generation.correlation_engine - ERROR - No market data found in data\collection_YYYYMMDD_HHMMSS
+2025-07-15 01:18:35,355 - signal_generation.signal_generator - INFO - Generated 0 trading signals
+2025-07-15 01:18:35,355 - signal_generation.signal_generator - INFO - Signals saved to data\signals\signals_20250715_011835.json
+2025-07-15 01:18:35,355 - FearGreedEngine - INFO - Engine run completed successfully
