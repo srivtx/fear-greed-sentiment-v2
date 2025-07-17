@@ -29,6 +29,20 @@ The short answer: **Yes, but with important caveats.**
 - **Max Drawdown**: -12.4% (vs -19.6% for market)
 - **Win Rate**: 64.2% of trades profitable
 
+### Test It Yourself
+
+**Want to replicate our findings?**
+```bash
+# Run the system
+python goquant_main.py --mode real-time
+
+# Access research data
+curl http://localhost:5000/api/historical_data
+
+# Run backtests
+python -m backtesting.backtester
+```
+
 ## Overview
 
 This document presents the comprehensive research methodology, experimental design, and key findings from the development and validation of the Fear & Greed Sentiment Engine. It covers academic research foundations, empirical studies, and novel contributions to the field of sentiment-based financial analysis.

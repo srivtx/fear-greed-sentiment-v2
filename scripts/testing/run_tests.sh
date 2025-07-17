@@ -1,9 +1,8 @@
 #!/bin/bash
 # Quick Test Runner Script for Fear & Greed Sentiment Engine
 
-# Navigate to project root
-cd "$(dirname "$0")/../.."
-export PYTHONPATH="$(pwd)"
+cd /workspaces/fear-greed-sentiment-v2
+export PYTHONPATH=/workspaces/fear-greed-sentiment-v2
 
 echo "🚀 Fear & Greed Sentiment Engine - Quick Test Runner"
 echo "=================================================="
@@ -35,17 +34,17 @@ case $choice in
     1)
         echo "🧪 Running Comprehensive Test Suite..."
         echo "======================================"
-        python tests/test_comprehensive_suite.py
+        python test_comprehensive_suite.py
         ;;
     2)
         echo "📊 Running Trading Signals Validation..."
         echo "======================================="
-        python tests/validate_signals.py
+        python validate_signals.py
         ;;
     3)
         echo "🎛️ Running Dashboard Data Validation..."
         echo "======================================="
-        python tests/dashboard_validation.py
+        python dashboard_validation.py
         ;;
     4)
         echo "🔄 Running All Tests..."
@@ -56,15 +55,15 @@ case $choice in
         mkdir -p "$report_dir"
         
         echo "1/3 🧪 Comprehensive Test Suite..."
-        python tests/test_comprehensive_suite.py | tee "$report_dir/comprehensive_test.txt"
+        python test_comprehensive_suite.py | tee "$report_dir/comprehensive_test.txt"
         
         echo
         echo "2/3 📊 Trading Signals Validation..."
-        python tests/validate_signals.py | tee "$report_dir/signal_validation.txt"
+        python validate_signals.py | tee "$report_dir/signal_validation.txt"
         
         echo
         echo "3/3 🎛️ Dashboard Data Validation..."
-        python tests/dashboard_validation.py | tee "$report_dir/dashboard_validation.txt"
+        python dashboard_validation.py | tee "$report_dir/dashboard_validation.txt"
         
         echo
         echo "✅ All tests completed! Reports saved in $report_dir/"

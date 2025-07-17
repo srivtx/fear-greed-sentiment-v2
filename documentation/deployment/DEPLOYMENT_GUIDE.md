@@ -1,12 +1,20 @@
-# 🚀 GoQuant Fear & Greed Sentiment Engine - Deployment Guide
+# 🚀 Fear & Greed Sentiment Engine - Deployment Guide
 
-## 📋 **Quick Production Setup**
+## 📋 **Quick Production Setup### **🧪 Performance Tests**
+```bash
+# Quick validation (30 seconds)
+python -m pytest tests/test_system_integration.py -v
 
-### **🎯 Automated Setup (Recommended)**
+# Extended performance test (5 minutes)
+python goquant_main.py --mode performance-test --duration 5
+
+# Real-time demonstration
+python goquant_main.py --mode real-time --duration 2
+``` Automated Setup (Recommended)**
 ```bash
 # One-command production setup
-chmod +x setup_production.sh
-./setup_production.sh
+chmod +x quick_start.sh
+./quick_start.sh
 ```
 
 ### **🔧 Manual Setup**
@@ -14,12 +22,12 @@ chmod +x setup_production.sh
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Configure API keys
+# 2. Configure settings
 cp config/config.json.example config/config.json
-# Edit config/config.json with your API keys
+# Edit config/config.json with your preferences
 
-# 3. Validate system
-python validate_goquant_system.py
+# 3. Test system
+python -m pytest tests/ -v
 
 # 4. Run production engine
 python goquant_main.py --mode real-time
@@ -33,7 +41,7 @@ python goquant_main.py --mode real-time
 | File | Purpose | Category |
 |------|---------|----------|
 | `goquant_main.py` | Production main application | **Primary** |
-| `validate_goquant_system.py` | System validation | **Testing** |
+| `web_app.py` | Web dashboard interface | **Interface** |
 | `real_time_engine.py` | Multi-threaded processing | **Engine** |
 | `advanced_sentiment_analyzer.py` | Enhanced NLP | **Analysis** |
 | `advanced_signal_generator.py` | Risk-adjusted signals | **Signals** |

@@ -27,6 +27,20 @@ This guide shows you how to **turn sentiment into profitable trading strategies*
 - How to optimize portfolios with sentiment data
 - Real backtesting results and performance metrics
 
+### Quick Start
+
+**Want to test strategies immediately?**
+```bash
+# Run the system
+python goquant_main.py --mode real-time
+
+# Access the web dashboard
+open http://localhost:5000
+
+# View trading signals
+curl http://localhost:5000/api/signals
+```
+
 ## Overview
 
 This documentation provides comprehensive financial analysis capabilities of the Fear & Greed Sentiment Engine, covering market correlation studies, risk assessment models, trading strategy development, and portfolio optimization techniques based on sentiment data.

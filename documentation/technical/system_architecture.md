@@ -14,6 +14,20 @@ Markets aren't just driven by numbers - they're driven by emotions:
 
 Our system captures these emotions as they happen and converts them into actionable trading signals.
 
+### Quick Architecture Overview
+
+**Want to see the system in action?**
+```bash
+# Start the system
+python goquant_main.py --mode real-time
+
+# View the web dashboard
+open http://localhost:5000
+
+# Check system architecture
+curl http://localhost:5000/api/system_stats
+```
+
 ## Overview
 
 The Fear & Greed Sentiment Engine is a comprehensive real-time sentiment analysis system designed for financial markets. The architecture follows a modular, scalable design pattern that enables efficient processing of multiple data sources and real-time signal generation.

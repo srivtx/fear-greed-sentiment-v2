@@ -1,53 +1,1030 @@
 # Integration Guide
 
-## Overview
+## 🔧 Overview
 
 This guide provides comprehensive instructions for integrating the Fear & Greed Sentiment Engine into various platforms, applications, and trading systems. It covers everything from simple API integrations to complex real-time trading bot implementations.
 
-## Quick Start Integration
+## 🚀 Quick Start Integration
 
 ### Basic Setup
 
-#### 1. API Key Generation
-
-First, obtain your API credentials:
+#### 1. Start the Application
 
 ```bash
-# Register for API access
-curl -X POST https://api.feargreed-sentiment.com/v1/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email": "your-email@example.com",
-    "company": "Your Company",
-    "use_case": "Trading bot development"
-  }'
+# Clone and setup the repository
+git clone https://github.com/your-repo/fear-greed-sentiment-v2.git
+cd fear-greed-sentiment-v2
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure settings
+cp config/config.json.example config/config.json
+
+# Start the web application
+python web_app.py
 ```
 
-#### 2. Environment Setup
+#### 2. Verify API Access
 
 ```bash
-# Install required packages
-pip install feargreed-sentiment requests pandas numpy
-
-# Set environment variables
-export FEARGREED_API_KEY="your_api_key_here"
-export FEARGREED_BASE_URL="https://api.feargreed-sentiment.com/v1"
+# Test API connection
+curl -X GET "http://localhost:5000/api/sentiment"
 ```
 
 #### 3. Basic Integration Test
 
 ```python
-import os
 import requests
+import json
 
 # Test API connection
 def test_api_connection():
-    headers = {
-        'Authorization': f'Bearer {os.getenv("FEARGREED_API_KEY")}',
-        'Content-Type': 'application/json'
-    }
+    response = requests.get("http://localhost:5000/api/sentiment")
     
-    response = requests.get(
+    if response.status_code == 200:
+        data = response.json()
+        print(f"✅ API Connected!")
+        print(f"Fear & Greed Index: {data['fear_greed_index']['fear_greed_index']}")
+        print(f"Market Sentiment: {data['fear_greed_index']['market_sentiment']}")
+        return True
+    else:
+        print(f"❌ API Connection Failed: {response.status_code}")
+        return False
+
+# Run test
+if __name__ == "__main__":
+    test_api_connection()
+```
+
+---
+
+## 📊 Integration Patterns
+
+### **1. Real-Time Dashboard Integration**
+
+```python
+import requests
+import time
+import json
+
+class SentimentDashboard:
+    def __init__(self, base_url="http://localhost:5000/api"):
+        self.base_url = base_url
+        self.last_update = None
+        
+    def get_real_time_data(self):
+        """Get real-time sentiment and signals"""
+        try:
+            # Get sentiment data
+            sentiment_resp = requests.get(f"{self.base_url}/sentiment")
+            signals_resp = requests.get(f"{self.base_url}/signals")
+            stats_resp = requests.get(f"{self.base_url}/system_stats")
+            
+            return {
+                "sentiment": sentiment_resp.json(),
+                "signals": signals_resp.json(),
+                "stats": stats_resp.json(),
+                "timestamp": time.time()
+            }
+        except Exception as e:
+            print(f"Error fetching data: {e}")
+            return None
+    
+    def update_dashboard(self):
+        """Update dashboard with latest data"""
+        data = self.get_real_time_data()
+        if data:
+            self.display_metrics(data)
+            self.last_update = data['timestamp']
+    
+    def display_metrics(self, data):
+        """Display key metrics"""
+        sentiment = data['sentiment']
+        signals = data['signals']
+        
+        print(f"\n📊 SENTIMENT DASHBOARD")
+        print(f"🔥 Fear & Greed Index: {sentiment['fear_greed_index']['fear_greed_index']:.1f}")
+        print(f"📈 Market Sentiment: {sentiment['fear_greed_index']['market_sentiment']}")
+        print(f"📝 Total Mentions: {sentiment['fear_greed_index']['total_mentions']}")
+        
+        print(f"\n⚡ TRADING SIGNALS")
+        for signal in signals.get('signals', []):
+            print(f"• {signal['asset']}: {signal['signal']} (Confidence: {signal['confidence']:.2f})")
+    
+    def run_continuous(self, interval=30):
+        """Run dashboard continuously"""
+        print("🚀 Starting Real-Time Dashboard...")
+        while True:
+            self.update_dashboard()
+            time.sleep(interval)
+
+# Usage
+dashboard = SentimentDashboard()
+dashboard.run_continuous()
+```
+
+### **2. Trading Bot Integration**
+
+```python
+import requests
+import logging
+from datetime import datetime
+
+class SentimentTradingBot:
+    def __init__(self, api_base="http://localhost:5000/api"):
+        self.api_base = api_base
+        self.positions = {}
+        self.setup_logging()
+    
+    def setup_logging(self):
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s'
+        )
+        self.logger = logging.getLogger(__name__)
+    
+    def get_sentiment_signals(self):
+        """Get trading signals from sentiment analysis"""
+        try:
+            response = requests.get(f"{self.api_base}/signals")
+            if response.status_code == 200:
+                return response.json()
+            else:
+                self.logger.error(f"Failed to get signals: {response.status_code}")
+                return None
+        except Exception as e:
+            self.logger.error(f"Error getting signals: {e}")
+            return None
+    
+    def get_fear_greed_index(self):
+        """Get current Fear & Greed Index"""
+        try:
+            response = requests.get(f"{self.api_base}/sentiment")
+            if response.status_code == 200:
+                data = response.json()
+                return data['fear_greed_index']['fear_greed_index']
+            return None
+        except Exception as e:
+            self.logger.error(f"Error getting Fear & Greed Index: {e}")
+            return None
+    
+    def evaluate_signal(self, signal):
+        """Evaluate if signal should be acted upon"""
+        fear_greed = self.get_fear_greed_index()
+        
+        # Trading logic based on sentiment
+        if signal['signal'] == 'BUY':
+            # Buy on high confidence signals during moderate greed
+            if signal['confidence'] > 0.7 and 30 < fear_greed < 70:
+                return True
+        elif signal['signal'] == 'SELL':
+            # Sell on high confidence signals during extreme greed
+            if signal['confidence'] > 0.7 and fear_greed > 70:
+                return True
+        
+        return False
+    
+    def execute_trade(self, signal):
+        """Execute trade based on signal"""
+        # This would integrate with your actual trading platform
+        self.logger.info(f"TRADE SIGNAL: {signal['signal']} {signal['asset']}")
+        self.logger.info(f"Confidence: {signal['confidence']:.2f}")
+        self.logger.info(f"Reasoning: {', '.join(signal['reasoning'])}")
+        
+        # Placeholder for actual trade execution
+        if signal['signal'] == 'BUY':
+            self.positions[signal['asset']] = 'LONG'
+        elif signal['signal'] == 'SELL':
+            self.positions[signal['asset']] = 'SHORT'
+    
+    def run_trading_loop(self):
+        """Main trading loop"""
+        self.logger.info("🤖 Starting Sentiment Trading Bot...")
+        
+        while True:
+            try:
+                # Get signals
+                signals_data = self.get_sentiment_signals()
+                if not signals_data:
+                    time.sleep(30)
+                    continue
+                
+                # Process each signal
+                for signal in signals_data.get('signals', []):
+                    if self.evaluate_signal(signal):
+                        self.execute_trade(signal)
+                
+                # Wait before next check
+                time.sleep(60)
+                
+            except KeyboardInterrupt:
+                self.logger.info("Bot stopped by user")
+                break
+            except Exception as e:
+                self.logger.error(f"Error in trading loop: {e}")
+                time.sleep(30)
+
+# Usage
+bot = SentimentTradingBot()
+bot.run_trading_loop()
+```
+
+### **3. Portfolio Management Integration**
+
+```python
+import requests
+import pandas as pd
+from datetime import datetime, timedelta
+
+class SentimentPortfolioManager:
+    def __init__(self, api_base="http://localhost:5000/api"):
+        self.api_base = api_base
+        self.portfolio = {}
+        self.sentiment_history = []
+    
+    def get_portfolio_sentiment(self, assets):
+        """Get sentiment for multiple assets"""
+        portfolio_sentiment = {}
+        
+        # Get current sentiment
+        response = requests.get(f"{self.api_base}/sentiment")
+        if response.status_code == 200:
+            data = response.json()
+            
+            for asset in assets:
+                portfolio_sentiment[asset] = {
+                    'fear_greed_index': data['fear_greed_index']['fear_greed_index'],
+                    'market_sentiment': data['fear_greed_index']['market_sentiment'],
+                    'timestamp': datetime.now()
+                }
+        
+        return portfolio_sentiment
+    
+    def calculate_sentiment_weights(self, sentiment_data):
+        """Calculate portfolio weights based on sentiment"""
+        weights = {}
+        total_weight = 0
+        
+        for asset, data in sentiment_data.items():
+            fear_greed = data['fear_greed_index']
+            
+            # Weight calculation based on Fear & Greed Index
+            if fear_greed < 25:  # Extreme Fear
+                weight = 0.4  # Higher allocation during fear
+            elif fear_greed < 45:  # Fear
+                weight = 0.3
+            elif fear_greed < 55:  # Neutral
+                weight = 0.2
+            elif fear_greed < 75:  # Greed
+                weight = 0.15
+            else:  # Extreme Greed
+                weight = 0.1  # Lower allocation during extreme greed
+            
+            weights[asset] = weight
+            total_weight += weight
+        
+        # Normalize weights
+        for asset in weights:
+            weights[asset] = weights[asset] / total_weight
+        
+        return weights
+    
+    def rebalance_portfolio(self, target_weights):
+        """Rebalance portfolio based on sentiment"""
+        print(f"\n📊 PORTFOLIO REBALANCING")
+        print(f"Timestamp: {datetime.now()}")
+        
+        for asset, weight in target_weights.items():
+            current_weight = self.portfolio.get(asset, 0)
+            change = weight - current_weight
+            
+            print(f"• {asset}: {current_weight:.1%} → {weight:.1%} (Change: {change:+.1%})")
+            
+            # Update portfolio
+            self.portfolio[asset] = weight
+    
+    def generate_report(self):
+        """Generate sentiment-based portfolio report"""
+        print(f"\n📈 SENTIMENT PORTFOLIO REPORT")
+        print(f"Generated: {datetime.now()}")
+        
+        # Get current sentiment
+        response = requests.get(f"{self.api_base}/sentiment")
+        if response.status_code == 200:
+            data = response.json()
+            print(f"Fear & Greed Index: {data['fear_greed_index']['fear_greed_index']}")
+            print(f"Market Sentiment: {data['fear_greed_index']['market_sentiment']}")
+        
+        # Portfolio allocation
+        print(f"\nCurrent Portfolio Allocation:")
+        for asset, weight in self.portfolio.items():
+            print(f"• {asset}: {weight:.1%}")
+    
+    def run_portfolio_management(self, assets, rebalance_interval=3600):
+        """Run continuous portfolio management"""
+        print("💼 Starting Sentiment Portfolio Manager...")
+        
+        while True:
+            try:
+                # Get sentiment data
+                sentiment_data = self.get_portfolio_sentiment(assets)
+                
+                # Calculate optimal weights
+                target_weights = self.calculate_sentiment_weights(sentiment_data)
+                
+                # Rebalance if needed
+                self.rebalance_portfolio(target_weights)
+                
+                # Generate report
+                self.generate_report()
+                
+                # Wait for next rebalance
+                time.sleep(rebalance_interval)
+                
+            except KeyboardInterrupt:
+                print("Portfolio manager stopped by user")
+                break
+            except Exception as e:
+                print(f"Error in portfolio management: {e}")
+                time.sleep(60)
+
+# Usage
+assets = ['Bitcoin', 'Ethereum', 'Stock Market']
+manager = SentimentPortfolioManager()
+manager.run_portfolio_management(assets)
+```
+
+---
+
+## 🔗 Web Application Integration
+
+### **Frontend Integration (JavaScript)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="dashboard">
+        <h1>Fear & Greed Sentiment Dashboard</h1>
+        <div id="fear-greed-meter"></div>
+        <div id="signals-panel"></div>
+        <div id="chart-container">
+            <canvas id="sentimentChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        class SentimentDashboard {
+            constructor() {
+                this.apiBase = 'http://localhost:5000/api';
+                this.chart = null;
+                this.initialize();
+            }
+            
+            async initialize() {
+                await this.setupChart();
+                this.startAutoUpdate();
+            }
+            
+            async fetchSentimentData() {
+                try {
+                    const response = await fetch(`${this.apiBase}/sentiment`);
+                    return await response.json();
+                } catch (error) {
+                    console.error('Error fetching sentiment data:', error);
+                    return null;
+                }
+            }
+            
+            async fetchSignals() {
+                try {
+                    const response = await fetch(`${this.apiBase}/signals`);
+                    return await response.json();
+                } catch (error) {
+                    console.error('Error fetching signals:', error);
+                    return null;
+                }
+            }
+            
+            updateFearGreedMeter(data) {
+                const fearGreedIndex = data.fear_greed_index.fear_greed_index;
+                const sentiment = data.fear_greed_index.market_sentiment;
+                
+                document.getElementById('fear-greed-meter').innerHTML = `
+                    <h2>Fear & Greed Index</h2>
+                    <div class="meter-value">${fearGreedIndex.toFixed(1)}</div>
+                    <div class="meter-sentiment">${sentiment}</div>
+                `;
+            }
+            
+            updateSignalsPanel(signals) {
+                const signalsHtml = signals.signals.map(signal => `
+                    <div class="signal-item">
+                        <strong>${signal.asset}</strong>: ${signal.signal}
+                        <span class="confidence">(${(signal.confidence * 100).toFixed(1)}%)</span>
+                    </div>
+                `).join('');
+                
+                document.getElementById('signals-panel').innerHTML = `
+                    <h3>Trading Signals</h3>
+                    ${signalsHtml}
+                `;
+            }
+            
+            async setupChart() {
+                const ctx = document.getElementById('sentimentChart').getContext('2d');
+                this.chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Fear & Greed Index',
+                            data: [],
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+            
+            async updateDashboard() {
+                const sentimentData = await this.fetchSentimentData();
+                const signalsData = await this.fetchSignals();
+                
+                if (sentimentData) {
+                    this.updateFearGreedMeter(sentimentData);
+                    
+                    // Update chart
+                    const now = new Date().toLocaleTimeString();
+                    this.chart.data.labels.push(now);
+                    this.chart.data.datasets[0].data.push(sentimentData.fear_greed_index.fear_greed_index);
+                    
+                    // Keep only last 20 data points
+                    if (this.chart.data.labels.length > 20) {
+                        this.chart.data.labels.shift();
+                        this.chart.data.datasets[0].data.shift();
+                    }
+                    
+                    this.chart.update();
+                }
+                
+                if (signalsData) {
+                    this.updateSignalsPanel(signalsData);
+                }
+            }
+            
+            startAutoUpdate() {
+                // Update immediately
+                this.updateDashboard();
+                
+                // Update every 30 seconds
+                setInterval(() => this.updateDashboard(), 30000);
+            }
+        }
+        
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new SentimentDashboard();
+        });
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        #dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .meter-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .meter-sentiment {
+            font-size: 24px;
+            color: #666;
+        }
+        
+        .signal-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .confidence {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</body>
+</html>
+```
+
+---
+
+## 🔧 Advanced Integration Examples
+
+### **Webhook Integration**
+
+```python
+from flask import Flask, request, jsonify
+import requests
+
+app = Flask(__name__)
+
+@app.route('/webhook/sentiment', methods=['POST'])
+def sentiment_webhook():
+    """Handle sentiment update webhooks"""
+    data = request.json
+    
+    # Process sentiment update
+    fear_greed = data.get('fear_greed_index', 0)
+    
+    # Trigger actions based on sentiment
+    if fear_greed > 80:
+        # Extreme greed - consider selling
+        trigger_sell_alert(data)
+    elif fear_greed < 20:
+        # Extreme fear - consider buying
+        trigger_buy_alert(data)
+    
+    return jsonify({'status': 'processed'})
+
+def trigger_sell_alert(data):
+    """Send sell alert"""
+    # Integration with your notification system
+    pass
+
+def trigger_buy_alert(data):
+    """Send buy alert"""
+    # Integration with your notification system
+    pass
+```
+
+### **Discord/Slack Bot Integration**
+
+```python
+import discord
+import requests
+from discord.ext import commands, tasks
+
+class SentimentBot(commands.Bot):
+    def __init__(self):
+        intents = discord.Intents.default()
+        intents.message_content = True
+        super().__init__(command_prefix='!', intents=intents)
+        
+        self.api_base = "http://localhost:5000/api"
+    
+    async def on_ready(self):
+        print(f'{self.user} has connected to Discord!')
+        self.sentiment_updates.start()
+    
+    @commands.command(name='sentiment')
+    async def get_sentiment(self, ctx):
+        """Get current sentiment"""
+        try:
+            response = requests.get(f"{self.api_base}/sentiment")
+            if response.status_code == 200:
+                data = response.json()
+                fear_greed = data['fear_greed_index']['fear_greed_index']
+                sentiment = data['fear_greed_index']['market_sentiment']
+                
+                embed = discord.Embed(
+                    title="📊 Market Sentiment",
+                    color=0x00ff00 if fear_greed > 50 else 0xff0000
+                )
+                embed.add_field(
+                    name="Fear & Greed Index",
+                    value=f"{fear_greed:.1f}/100",
+                    inline=True
+                )
+                embed.add_field(
+                    name="Market Sentiment",
+                    value=sentiment,
+                    inline=True
+                )
+                
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("❌ Unable to fetch sentiment data")
+        except Exception as e:
+            await ctx.send(f"❌ Error: {e}")
+    
+    @commands.command(name='signals')
+    async def get_signals(self, ctx):
+        """Get trading signals"""
+        try:
+            response = requests.get(f"{self.api_base}/signals")
+            if response.status_code == 200:
+                data = response.json()
+                
+                embed = discord.Embed(title="⚡ Trading Signals", color=0x0099ff)
+                
+                for signal in data.get('signals', []):
+                    embed.add_field(
+                        name=f"{signal['asset']} - {signal['signal']}",
+                        value=f"Confidence: {signal['confidence']:.1%}",
+                        inline=False
+                    )
+                
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("❌ Unable to fetch signals")
+        except Exception as e:
+            await ctx.send(f"❌ Error: {e}")
+    
+    @tasks.loop(minutes=15)
+    async def sentiment_updates(self):
+        """Send periodic sentiment updates"""
+        try:
+            response = requests.get(f"{self.api_base}/sentiment")
+            if response.status_code == 200:
+                data = response.json()
+                fear_greed = data['fear_greed_index']['fear_greed_index']
+                
+                # Send alert for extreme values
+                if fear_greed > 80 or fear_greed < 20:
+                    channel = self.get_channel(CHANNEL_ID)  # Your channel ID
+                    if channel:
+                        await channel.send(f"🚨 **EXTREME SENTIMENT ALERT** 🚨\n"
+                                         f"Fear & Greed Index: {fear_greed:.1f}")
+        except Exception as e:
+            print(f"Error in sentiment updates: {e}")
+
+# Run the bot
+bot = SentimentBot()
+bot.run('YOUR_BOT_TOKEN')
+```
+
+---
+
+## 📱 Mobile App Integration
+
+### **React Native Example**
+
+```javascript
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, RefreshControl, ScrollView } from 'react-native';
+
+const SentimentScreen = () => {
+  const [sentimentData, setSentimentData] = useState(null);
+  const [signals, setSignals] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  
+  const API_BASE = 'http://localhost:5000/api';
+  
+  const fetchSentimentData = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/sentiment`);
+      const data = await response.json();
+      setSentimentData(data);
+    } catch (error) {
+      console.error('Error fetching sentiment:', error);
+    }
+  };
+  
+  const fetchSignals = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/signals`);
+      const data = await response.json();
+      setSignals(data.signals || []);
+    } catch (error) {
+      console.error('Error fetching signals:', error);
+    }
+  };
+  
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await Promise.all([fetchSentimentData(), fetchSignals()]);
+    setRefreshing(false);
+  };
+  
+  useEffect(() => {
+    fetchSentimentData();
+    fetchSignals();
+    
+    // Auto-refresh every 30 seconds
+    const interval = setInterval(() => {
+      fetchSentimentData();
+      fetchSignals();
+    }, 30000);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  const getFearGreedColor = (index) => {
+    if (index < 25) return '#ff4444';
+    if (index < 50) return '#ff8800';
+    if (index < 75) return '#ffff00';
+    return '#44ff44';
+  };
+  
+  return (
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
+      {sentimentData && (
+        <View style={styles.sentimentCard}>
+          <Text style={styles.title}>Fear & Greed Index</Text>
+          <Text 
+            style={[
+              styles.indexValue,
+              { color: getFearGreedColor(sentimentData.fear_greed_index.fear_greed_index) }
+            ]}
+          >
+            {sentimentData.fear_greed_index.fear_greed_index.toFixed(1)}
+          </Text>
+          <Text style={styles.sentiment}>
+            {sentimentData.fear_greed_index.market_sentiment}
+          </Text>
+        </View>
+      )}
+      
+      <View style={styles.signalsCard}>
+        <Text style={styles.title}>Trading Signals</Text>
+        {signals.map((signal, index) => (
+          <View key={index} style={styles.signalItem}>
+            <Text style={styles.assetName}>{signal.asset}</Text>
+            <Text style={[
+              styles.signalType,
+              { color: signal.signal === 'BUY' ? '#44ff44' : '#ff4444' }
+            ]}>
+              {signal.signal}
+            </Text>
+            <Text style={styles.confidence}>
+              {(signal.confidence * 100).toFixed(1)}%
+            </Text>
+          </View>
+        ))}
+      </View>
+    </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f5f5f5',
+  },
+  sentimentCard: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  signalsCard: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  indexValue: {
+    fontSize: 48,
+    fontWeight: 'bold',
+  },
+  sentiment: {
+    fontSize: 18,
+    color: '#666',
+    marginTop: 10,
+  },
+  signalItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  assetName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  signalType: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  confidence: {
+    fontSize: 14,
+    color: '#666',
+  },
+});
+
+export default SentimentScreen;
+```
+
+---
+
+## 🛠️ Error Handling and Best Practices
+
+### **Robust Error Handling**
+
+```python
+import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+import logging
+
+class SentimentAPIClient:
+    def __init__(self, base_url="http://localhost:5000/api", timeout=30):
+        self.base_url = base_url
+        self.timeout = timeout
+        self.session = self._create_session()
+        self.logger = logging.getLogger(__name__)
+    
+    def _create_session(self):
+        """Create session with retry strategy"""
+        session = requests.Session()
+        
+        # Retry strategy
+        retry_strategy = Retry(
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[429, 500, 502, 503, 504],
+        )
+        
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        session.mount("http://", adapter)
+        session.mount("https://", adapter)
+        
+        return session
+    
+    def _make_request(self, endpoint, method='GET', data=None):
+        """Make API request with error handling"""
+        url = f"{self.base_url}/{endpoint}"
+        
+        try:
+            response = self.session.request(
+                method=method,
+                url=url,
+                json=data,
+                timeout=self.timeout
+            )
+            
+            response.raise_for_status()
+            return response.json()
+            
+        except requests.exceptions.Timeout:
+            self.logger.error(f"Request timeout for {endpoint}")
+            raise Exception("API request timed out")
+        
+        except requests.exceptions.ConnectionError:
+            self.logger.error(f"Connection error for {endpoint}")
+            raise Exception("Unable to connect to API")
+        
+        except requests.exceptions.HTTPError as e:
+            self.logger.error(f"HTTP error for {endpoint}: {e}")
+            if response.status_code == 429:
+                raise Exception("Rate limit exceeded")
+            else:
+                raise Exception(f"API error: {e}")
+        
+        except Exception as e:
+            self.logger.error(f"Unexpected error for {endpoint}: {e}")
+            raise Exception(f"Unexpected error: {e}")
+    
+    def get_sentiment(self):
+        """Get sentiment with error handling"""
+        try:
+            return self._make_request("sentiment")
+        except Exception as e:
+            self.logger.error(f"Error getting sentiment: {e}")
+            return None
+    
+    def get_signals(self):
+        """Get signals with error handling"""
+        try:
+            return self._make_request("signals")
+        except Exception as e:
+            self.logger.error(f"Error getting signals: {e}")
+            return None
+
+# Usage with error handling
+client = SentimentAPIClient()
+
+sentiment = client.get_sentiment()
+if sentiment:
+    print(f"Fear & Greed Index: {sentiment['fear_greed_index']['fear_greed_index']}")
+else:
+    print("Failed to get sentiment data")
+```
+
+### **Performance Optimization**
+
+```python
+import asyncio
+import aiohttp
+import time
+
+class AsyncSentimentClient:
+    def __init__(self, base_url="http://localhost:5000/api"):
+        self.base_url = base_url
+        self.session = None
+    
+    async def __aenter__(self):
+        self.session = aiohttp.ClientSession()
+        return self
+    
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.session.close()
+    
+    async def _make_request(self, endpoint):
+        """Make async API request"""
+        url = f"{self.base_url}/{endpoint}"
+        
+        try:
+            async with self.session.get(url) as response:
+                response.raise_for_status()
+                return await response.json()
+        except Exception as e:
+            print(f"Error requesting {endpoint}: {e}")
+            return None
+    
+    async def get_all_data(self):
+        """Get all data concurrently"""
+        tasks = [
+            self._make_request("sentiment"),
+            self._make_request("signals"),
+            self._make_request("system_stats")
+        ]
+        
+        results = await asyncio.gather(*tasks)
+        
+        return {
+            "sentiment": results[0],
+            "signals": results[1],
+            "system_stats": results[2]
+        }
+
+# Usage
+async def main():
+    async with AsyncSentimentClient() as client:
+        start_time = time.time()
+        data = await client.get_all_data()
+        end_time = time.time()
+        
+        print(f"Retrieved all data in {end_time - start_time:.2f} seconds")
+        
+        if data["sentiment"]:
+            print(f"Fear & Greed Index: {data['sentiment']['fear_greed_index']['fear_greed_index']}")
+
+# Run async
+asyncio.run(main())
+```
+
+---
+
+## 📚 Additional Resources
+
+### **Related Documentation**
+- **[API Reference](./api_reference.md)** - Complete API documentation
+- **[Web Dashboard Guide](../../docs/EXTENDED_GUIDE.md)** - Dashboard usage
+- **[System Architecture](../../docs/SYSTEM_OVERVIEW.md)** - Technical overview
+
+### **Code Examples**
+- **Integration Examples**: `/scripts/integration_examples/`
+- **Test Scripts**: `/tests/integration/`
+- **Sample Applications**: `/examples/`
+
+### **Support and Community**
+- **Issues**: GitHub Issues
+- **Discussions**: GitHub Discussions
+- **Documentation**: `/docs/` directory
+
+---
+
+**🎉 Start building amazing sentiment-powered applications today!**
         f'{os.getenv("FEARGREED_BASE_URL")}/health',
         headers=headers
     )

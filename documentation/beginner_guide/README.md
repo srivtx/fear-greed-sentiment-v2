@@ -2,9 +2,16 @@
 
 ## Welcome! 🎉
 
-This guide will teach you everything about our Fear & Greed Sentiment Engine from absolute basics to advanced concepts. No prior knowledge required!
+This comprehensive guide will teach you everything about our Fear & Greed Sentiment Engine from absolute basics to advanced concepts. No prior knowledge required!
 
-## 📖 Table of Contents
+## � Quick Start
+
+**Want to dive right in?**
+1. **[Run the System](../../QUICK_START.md)** - Get started in 2 minutes
+2. **[View the Dashboard](../../templates/dashboard.html)** - See it in action
+3. **[Test the API](../api/api_reference.md)** - Try the endpoints
+
+## 📖 Learning Path
 
 ### **Part 1: Understanding the Basics**
 - **[Chapter 1: What is Sentiment Analysis?](chapter_01_what_is_sentiment_analysis.md)**
@@ -21,7 +28,7 @@ This guide will teach you everything about our Fear & Greed Sentiment Engine fro
 - **[Chapter 3: Python & Programming Basics](chapter_03_python_basics.md)**
   - Essential Python concepts you need to know
   - Libraries we use and why
-  - Setting up your environment
+  - Setting up your environment with `requirements.txt`
 
 - **[Chapter 4: Understanding APIs & Data Sources](chapter_04_apis_data_sources.md)**
   - What APIs are (like digital post offices)
@@ -51,48 +58,48 @@ This guide will teach you everything about our Fear & Greed Sentiment Engine fro
   - Pattern matching and regex basics
 
 ### **Part 5: Data Flow & Architecture**
-- **[Chapter 9: How Data Flows Through Our System](chapter_09_data_flow.md)**
+- **[Chapter 9: How Data Flows Through Our System](chapter_09_data_flow_architecture.md)**
   - From social media post to trading signal
   - Step-by-step journey of a tweet
   - Understanding the pipeline
 
-- **[Chapter 10: The Main Engine](chapter_10_main_engine.md)**
-  - How all components work together
-  - Real-time processing explained
-  - Threading and performance
-
-### **Part 6: Signal Generation & Trading**
-- **[Chapter 11: From Sentiment to Signals](chapter_11_signal_generation.md)**
+- **[Chapter 10: Signal Generation](chapter_10_signal_generation.md)**
   - How emotions become trading recommendations
   - Risk management and confidence scoring
   - Portfolio optimization basics
 
-- **[Chapter 12: Visualization & Results](chapter_12_visualization.md)**
+### **Part 6: Visualization & User Interface**
+- **[Chapter 11: Dashboards & Visualization](chapter_11_visualization_dashboards.md)**
   - Creating charts and graphs
   - Understanding the Fear & Greed gauge
   - Reading sentiment trends
 
-### **Part 7: Advanced Topics**
-- **[Chapter 13: Configuration & Customization](chapter_13_configuration.md)**
-  - Modifying settings and parameters
+- **[Chapter 12: Configuration & Customization](chapter_12_configuration_customization.md)**
+  - Modifying settings in `config/config.json`
   - Adding new data sources
   - Extending functionality
 
-- **[Chapter 14: Performance & Optimization](chapter_14_performance.md)**
+### **Part 7: Advanced Topics**
+- **[Chapter 13: Performance & Optimization](chapter_13_optimization_performance.md)**
   - Making the system faster
   - Handling large amounts of data
   - Memory and CPU optimization
 
-### **Part 8: Practical Application**
-- **[Chapter 15: Running the System](chapter_15_running_system.md)**
-  - Step-by-step usage guide
-  - Command-line interface explained
-  - Troubleshooting common issues
+- **[Chapter 14: Practical Usage Examples](chapter_14_practical_usage_examples.md)**
+  - Real-world trading scenarios
+  - Integration with existing systems
+  - Live trading considerations
 
-- **[Chapter 16: Building Your Own Features](chapter_16_building_features.md)**
+### **Part 8: Building & Contributing**
+- **[Chapter 15: Building New Features](chapter_15_building_new_features.md)**
   - Adding new sentiment sources
   - Creating custom analyzers
   - Contributing to the project
+
+- **[Chapter 16: Summary & Next Steps](chapter_16_summary_next_steps.md)**
+  - Key takeaways
+  - Advanced learning resources
+  - Community and support
 
 ## 🎯 Learning Path Recommendations
 
@@ -100,16 +107,19 @@ This guide will teach you everything about our Fear & Greed Sentiment Engine fro
 1. Start with Chapters 1-2 (concepts)
 2. Read Chapter 3 (Python basics)
 3. Continue sequentially through all chapters
+4. **Practice**: Run `python web_app.py` to see everything in action
 
 ### **Some Programming Experience**
 1. Skim Chapters 1-3 for context
 2. Focus on Chapters 4-8 (NLP and core concepts)
 3. Deep dive into Chapters 9-12
+4. **Practice**: Modify `config/config.json` and experiment
 
 ### **Experienced Developer**
 1. Read Chapters 1-2 for domain knowledge
 2. Jump to Chapters 7-11 (technical implementation)
 3. Review Chapters 13-16 for customization
+4. **Practice**: Explore `/data_collection/` and `/sentiment_analysis/` modules
 
 ## 🛠️ Prerequisites
 
@@ -131,6 +141,7 @@ This guide will teach you everything about our Fear & Greed Sentiment Engine fro
 2. **Try the examples** - Code snippets are meant to be run and experimented with
 3. **Ask questions** - Use the comments or issues section
 4. **Practice** - Modify the code to see what happens
+5. **Use the system** - Run `./quick_start.sh` to get hands-on experience
 
 ## 🎓 What You'll Learn
 
@@ -143,8 +154,36 @@ By the end of this guide, you'll understand:
 ✅ **How emotions in text translate to market signals**
 ✅ **How to visualize and interpret results**
 ✅ **How to modify and extend the system**
+✅ **How to integrate with trading platforms**
 
 ## 🚀 Ready to Start?
+
+### **Quick Test Run:**
+```bash
+cd /workspaces/fear-greed-sentiment-v2
+./quick_start.sh
+```
+
+### **Or Start Learning:**
+**[👉 Begin with Chapter 1: What is Sentiment Analysis?](chapter_01_what_is_sentiment_analysis.md)**
+
+---
+
+## 📚 Additional Resources
+
+### **For Hands-On Learning:**
+- **[Quick Start Guide](../../QUICK_START.md)** - Get the system running
+- **[API Reference](../api/api_reference.md)** - Use the live API
+- **[Testing Guide](../../docs/TESTING_GUIDE.md)** - Validate your understanding
+
+### **For Advanced Users:**
+- **[System Architecture](../../docs/SYSTEM_OVERVIEW.md)** - Technical deep dive
+- **[Development Guide](../development/)** - Contributing code
+- **[Research Documentation](../assignment/research_documentation.md)** - Academic context
+
+---
+
+**🎉 Let's build something amazing together!**
 
 Jump into **[Chapter 1: What is Sentiment Analysis?](chapter_01_what_is_sentiment_analysis.md)** and begin your journey!
 

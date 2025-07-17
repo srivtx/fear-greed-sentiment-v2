@@ -3,7 +3,9 @@
 <div align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com)
+[![Flask](https://img├── 📁 templates/                   # HTML templates
+├── 📁 static/                      # Static web assets (CSS, JS, images)
+├── 📁 scripts/                     # Utility scriptshields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
 
@@ -296,6 +298,26 @@ print(f'Available: {psutil.virtual_memory().available / 1024**3:.1f} GB')
 
 ---
 
+## 📚 **Documentation**
+
+### **For New Users**
+- **[README.md](README.md)** - Project overview and quick start
+- **[QUICK_START.md](QUICK_START.md)** - Quick setup guide
+- **[docs/EXTENDED_GUIDE.md](docs/EXTENDED_GUIDE.md)** - Comprehensive user guide
+
+### **For Developers**
+- **[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)** - Project structure documentation
+- **[docs/SYSTEM_OVERVIEW.md](docs/SYSTEM_OVERVIEW.md)** - System architecture
+- **[docs/TESTING_GUIDE.md](docs/TESTING_GUIDE.md)** - Testing procedures
+- **[docs/REALTIME_ENGINE_EXPLAINED.md](docs/REALTIME_ENGINE_EXPLAINED.md)** - Real-time engine deep dive
+
+### **For Traders**
+- **[docs/GOQUANT_MODES_GUIDE.md](docs/GOQUANT_MODES_GUIDE.md)** - GoQuant engine modes
+- **[tests/validate_signals.py](tests/validate_signals.py)** - Signal validation
+- **Web Dashboard** - Real-time monitoring at `http://localhost:5000`
+
+---
+
 ## 🤝 **Contributing**
 
 ### **🔧 Development Setup**
@@ -310,7 +332,7 @@ source dev-env/bin/activate
 pip install -r requirements.txt
 
 # Run tests
-python test_comprehensive_suite.py
+python tests/test_comprehensive_suite.py
 ```
 
 ### **🎯 Contribution Areas**
@@ -340,10 +362,10 @@ This project is open source under the MIT License - see [LICENSE](LICENSE) for d
 ## 🌟 **What's Next?**
 
 ### **🎯 Immediate Next Steps**
-1. **🧪 Run the test suite**: `python test_comprehensive_suite.py`
-2. **📊 Validate your data**: `python dashboard_validation.py`
+1. **🧪 Run the test suite**: `python tests/test_comprehensive_suite.py`
+2. **📊 Validate your data**: `python tests/dashboard_validation.py`
 3. **🌐 Explore the dashboard**: http://localhost:5000
-4. **📖 Check improvements**: See [IMPROVEMENTS.md](IMPROVEMENTS.md)
+4. **📖 Check improvements**: See [docs/IMPROVEMENTS.md](docs/IMPROVEMENTS.md)
 
 ### **🚀 Advanced Usage**
 - Set up automated data collection with cron jobs
@@ -359,9 +381,9 @@ This project is open source under the MIT License - see [LICENSE](LICENSE) for d
 
 ```bash
 # Get started in 3 commands:
-python main.py           # Collect & analyze data
-python web_app.py        # Start dashboard
-python dashboard_validation.py  # Validate results
+python main.py                           # Collect & analyze data
+python web_app.py                        # Start dashboard
+python tests/dashboard_validation.py     # Validate results
 ```
 
 **⭐ Star this repository if you find it useful!**

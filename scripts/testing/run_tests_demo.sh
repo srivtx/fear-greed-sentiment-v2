@@ -26,17 +26,17 @@ fi
 echo ""
 echo "1️⃣ Testing Comprehensive Suite..."
 echo "=================================="
-python tests/test_comprehensive_suite.py
+python test_comprehensive_suite.py
 
 echo ""
 echo "2️⃣ Validating Trading Signals..."
 echo "================================"
-python tests/validate_signals.py
+python validate_signals.py
 
 echo ""
 echo "3️⃣ Dashboard Validation..."
 echo "========================="
-python tests/dashboard_validation.py
+python dashboard_validation.py
 
 echo ""
 echo "✅ All tests completed successfully!"

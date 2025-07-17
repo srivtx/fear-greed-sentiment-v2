@@ -89,6 +89,7 @@ fear-greed-sentiment-v2/
 │   ├── GOQUANT_MODES_GUIDE.md      # GoQuant modes explanation
 │   ├── PROJECT_STRUCTURE.md        # This file
 │   ├── SYSTEM_OVERVIEW.md          # System architecture overview
+│   ├── REALTIME_ENGINE_EXPLAINED.md # Real-time engine deep dive
 │   ├── IMPROVEMENTS.md             # Feature improvements
 │   └── README_old.md               # Previous README version
 │

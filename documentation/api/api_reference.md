@@ -1,53 +1,395 @@
-# API Reference Documentation
+# Fear & Greed Sentiment Engine - API Reference
 
-## What This API Does
+## 📋 Overview
 
-Think of this API as your **direct line to market sentiment intelligence**. Instead of manually reading hundreds of news articles and social media posts to gauge market mood, you can simply make API calls to get:
+The Fear & Greed Sentiment Engine provides a RESTful API for accessing real-time sentiment analysis, Fear & Greed Index calculations, trading signals, and system metrics.
 
-- **Instant sentiment scores** for any stock or market
-- **Real-time fear/greed indicators** 
-- **Trading signals** based on sentiment analysis
-- **Historical sentiment trends** for backtesting strategies
+---
 
-### Who Should Use This API
-
-- **Traders**: Get sentiment-based entry/exit signals
-- **Portfolio Managers**: Incorporate sentiment into risk models  
-- **Developers**: Build sentiment-aware trading applications
-- **Researchers**: Access sentiment data for academic studies
-- **Financial Apps**: Add sentiment features to existing platforms
-
-### Simple Example: Getting Tesla Sentiment
-
-```bash
-# Get current sentiment for Tesla
-curl -X GET "https://api.feargreed-sentiment.com/v1/sentiment/TSLA" \
-  -H "Authorization: Bearer YOUR_API_KEY"
-
-# Response: {"symbol": "TSLA", "sentiment_score": 0.65, "fear_greed": "moderate_greed"}
-```
-
-## Overview
-
-The Fear & Greed Sentiment Engine provides a comprehensive RESTful API for sentiment analysis, signal generation, and data collection. This documentation covers all available endpoints, request/response formats, authentication, rate limiting, and integration examples.
-
-## Base URL and Versioning
+## 🌐 Base URL and Access
 
 ```
-Base URL: https://api.feargreed-sentiment.com/v1/
-Development: http://localhost:8000/v1/
+Development: http://localhost:5000/api/
+Production: https://your-domain.com/api/
 ```
 
 **API Version**: v1  
-**Authentication**: API Key or OAuth 2.0  
+**Authentication**: None required (development)  
 **Content Type**: `application/json`  
-**Rate Limiting**: 1000 requests/hour (standard tier)
+**Rate Limiting**: 100 requests/minute (development)
 
-## Authentication
+---
 
-### API Key Authentication
+## 📊 Core Endpoints
 
+### **1. Sentiment Analysis**
+
+#### `GET /api/sentiment`
+Get current sentiment analysis and Fear & Greed Index.
+
+**Example Request:**
+```bash
+curl -X GET "http://localhost:5000/api/sentiment"
+```
+
+**Example Response:**
+```json
+{
+  "fear_greed_index": {
+    "fear_greed_index": 67.3,
+    "market_sentiment": "Greed",
+    "total_mentions": 247,
+    "timestamp": "2025-07-17T14:30:22Z"
+  },
+  "sentiment_breakdown": {
+    "positive": 64.2,
+    "negative": 15.8,
+    "neutral": 20.0
+  },
+  "data_sources": {
+    "reddit": 172,
+    "news": 45,
+    "market": 30
+  },
+  "processing_time_ms": 245
+}
+```
+
+### **2. Trading Signals**
+
+#### `GET /api/signals`
+Get current trading signals based on sentiment analysis.
+
+**Example Request:**
+```bash
+curl -X GET "http://localhost:5000/api/signals"
+```
+
+**Example Response:**
+```json
+{
+  "signals": [
+    {
+      "asset": "Bitcoin",
+      "signal": "BUY",
+      "confidence": 0.78,
+      "reasoning": [
+        "Fear & Greed Index: 67.3 (Greed)",
+        "Positive sentiment: 64.2%",
+        "High engagement: 892 interactions"
+      ],
+      "risk_level": "Medium",
+      "timestamp": "2025-07-17T14:30:22Z"
+    },
+    {
+      "asset": "Ethereum",
+      "signal": "HOLD",
+      "confidence": 0.62,
+      "reasoning": [
+        "Neutral sentiment: 55.1%",
+        "Mixed signals from sources"
+      ],
+      "risk_level": "Low",
+      "timestamp": "2025-07-17T14:30:22Z"
+    }
+  ],
+  "total_signals": 2,
+  "last_updated": "2025-07-17T14:30:22Z"
+}
+```
+
+### **3. Historical Data**
+
+#### `GET /api/historical_data`
+Get historical sentiment and Fear & Greed Index data.
+
+**Example Request:**
+```bash
+curl -X GET "http://localhost:5000/api/historical_data"
+```
+
+**Example Response:**
+```json
+{
+  "historical_data": [
+    {
+      "timestamp": "2025-07-17T14:00:00Z",
+      "fear_greed_index": 65.8,
+      "sentiment": "Greed",
+      "data_points": 198
+    },
+    {
+      "timestamp": "2025-07-17T14:30:00Z",
+      "fear_greed_index": 67.3,
+      "sentiment": "Greed",
+      "data_points": 247
+    }
+  ],
+  "period": "24_hours",
+  "total_records": 48
+}
+```
+
+### **4. System Statistics**
+
+#### `GET /api/system_stats`
+Get system performance metrics and health status.
+
+**Example Request:**
+```bash
+curl -X GET "http://localhost:5000/api/system_stats"
+```
+
+**Example Response:**
+```json
+{
+  "system_health": {
+    "status": "healthy",
+    "uptime_seconds": 3600,
+    "threads_active": 11,
+    "memory_usage_mb": 52.3
+  },
+  "performance_metrics": {
+    "texts_processed": 1247,
+    "processing_speed": "174.2 texts/minute",
+    "average_latency_ms": 87,
+    "api_calls_made": 45
+  },
+  "data_collection": {
+    "reddit_posts": 172,
+    "news_articles": 45,
+    "market_updates": 30,
+    "last_collection": "2025-07-17T14:29:45Z"
+  },
+  "signal_generation": {
+    "signals_generated": 7,
+    "buy_signals": 3,
+    "sell_signals": 1,
+    "hold_signals": 3
+  }
+}
+```
+
+### **5. Data Collection Trigger**
+
+#### `POST /api/run_collection`
+Manually trigger a new data collection cycle.
+
+**Example Request:**
+```bash
+curl -X POST "http://localhost:5000/api/run_collection"
+```
+
+**Example Response:**
+```json
+{
+  "status": "success",
+  "message": "Data collection initiated",
+  "collection_id": "collection_20250717_143022",
+  "estimated_completion": "2025-07-17T14:32:00Z"
+}
+```
+
+---
+
+## 🔧 Integration Examples
+
+### **Python Integration**
+```python
+import requests
+import json
+
+class SentimentAPI:
+    def __init__(self, base_url="http://localhost:5000/api"):
+        self.base_url = base_url
+    
+    def get_sentiment(self):
+        """Get current sentiment analysis"""
+        response = requests.get(f"{self.base_url}/sentiment")
+        return response.json()
+    
+    def get_signals(self):
+        """Get trading signals"""
+        response = requests.get(f"{self.base_url}/signals")
+        return response.json()
+    
+    def get_fear_greed_index(self):
+        """Get Fear & Greed Index only"""
+        data = self.get_sentiment()
+        return data['fear_greed_index']['fear_greed_index']
+
+# Usage example
+api = SentimentAPI()
+sentiment = api.get_sentiment()
+fear_greed = api.get_fear_greed_index()
+signals = api.get_signals()
+
+print(f"Fear & Greed Index: {fear_greed}")
+print(f"Market Sentiment: {sentiment['fear_greed_index']['market_sentiment']}")
+```
+
+### **JavaScript Integration**
+```javascript
+class SentimentAPI {
+    constructor(baseUrl = 'http://localhost:5000/api') {
+        this.baseUrl = baseUrl;
+    }
+    
+    async getSentiment() {
+        const response = await fetch(`${this.baseUrl}/sentiment`);
+        return response.json();
+    }
+    
+    async getSignals() {
+        const response = await fetch(`${this.baseUrl}/signals`);
+        return response.json();
+    }
+    
+    async getSystemStats() {
+        const response = await fetch(`${this.baseUrl}/system_stats`);
+        return response.json();
+    }
+}
+
+// Usage example
+const api = new SentimentAPI();
+
+api.getSentiment().then(data => {
+    console.log('Fear & Greed Index:', data.fear_greed_index.fear_greed_index);
+    console.log('Market Sentiment:', data.fear_greed_index.market_sentiment);
+});
+```
+
+### **cURL Examples**
+```bash
+# Get sentiment with formatted output
+curl -s "http://localhost:5000/api/sentiment" | jq '.fear_greed_index'
+
+# Get only the Fear & Greed Index number
+curl -s "http://localhost:5000/api/sentiment" | jq '.fear_greed_index.fear_greed_index'
+
+# Get trading signals
+curl -s "http://localhost:5000/api/signals" | jq '.signals[]'
+
+# Monitor system health
+curl -s "http://localhost:5000/api/system_stats" | jq '.system_health'
+```
+
+---
+
+## 📊 Error Handling
+
+### **Standard HTTP Status Codes**
+- **200**: Success
+- **400**: Bad Request
+- **404**: Not Found
+- **429**: Rate Limit Exceeded
+- **500**: Internal Server Error
+
+### **Error Response Format**
+```json
+{
+  "error": "ValidationError",
+  "message": "Invalid request parameters",
+  "code": 400,
+  "timestamp": "2025-07-17T14:30:22Z"
+}
+```
+
+### **Common Error Scenarios**
+```bash
+# No sentiment data available
+{
+  "error": "NoDataError",
+  "message": "No sentiment data available. Run data collection first.",
+  "code": 404
+}
+
+# System overloaded
+{
+  "error": "SystemOverloadError", 
+  "message": "System is processing. Please try again in a few seconds.",
+  "code": 503
+}
+```
+
+---
+
+## 🎯 Rate Limiting
+
+### **Current Limits**
+- **Development**: 100 requests/minute
+- **Production**: 1000 requests/hour
+
+### **Rate Limit Headers**
 ```http
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1642684800
+```
+
+### **Handling Rate Limits**
+```python
+import time
+import requests
+
+def api_call_with_retry(url, max_retries=3):
+    for attempt in range(max_retries):
+        response = requests.get(url)
+        
+        if response.status_code == 200:
+            return response.json()
+        elif response.status_code == 429:
+            # Rate limited, wait and retry
+            time.sleep(60)
+            continue
+        else:
+            response.raise_for_status()
+    
+    raise Exception("Max retries exceeded")
+```
+
+---
+
+## 🔍 Testing the API
+
+### **Health Check**
+```bash
+# Test if API is running
+curl -I "http://localhost:5000/api/sentiment"
+```
+
+### **Quick Validation**
+```bash
+# Test all endpoints
+curl "http://localhost:5000/api/sentiment" && echo
+curl "http://localhost:5000/api/signals" && echo  
+curl "http://localhost:5000/api/system_stats" && echo
+```
+
+### **Performance Testing**
+```bash
+# Test response times
+time curl -s "http://localhost:5000/api/sentiment" > /dev/null
+```
+
+---
+
+## 📚 Additional Resources
+
+### **Related Documentation**
+- **[Web Dashboard Guide](../../docs/EXTENDED_GUIDE.md#web-dashboard-guide)** - Dashboard usage
+- **[System Overview](../../docs/SYSTEM_OVERVIEW.md)** - Architecture details
+- **[Testing Guide](../../docs/TESTING_GUIDE.md)** - API testing procedures
+
+### **Code Examples**
+- **Python Examples**: `/scripts/api_examples.py`
+- **JavaScript Examples**: `/static/js/api_client.js`
+- **Dashboard Source**: `/templates/dashboard.html`
+
+---
+
+**🎉 This API provides real-time access to comprehensive sentiment analysis and trading signals!**
 GET /v1/sentiment/analyze
 Authorization: Bearer YOUR_API_KEY
 Content-Type: application/json
