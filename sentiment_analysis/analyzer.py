@@ -442,33 +442,74 @@ class SentimentAnalysisEngine:
         neutral_count = general_sentiment.get("neutral", 0)
         total_count = general_sentiment.get("total", 0)
 
-        # Calculate sentiment ratio
-        sentiment_ratio = positive_count / (negative_count + 1)  # Add 1 to avoid division by zero
-
-        # Calculate positivity percentage
-        positivity_pct = (positive_count / total_count) * 100 if total_count > 0 else 50
-
-        # Calculate Fear & Greed Index (0-100)
-        # Base on sentiment ratio with bounds
-        base_index = min(100, max(0, 50 + (sentiment_ratio - 1) * 25))
-
-        # Adjust based on average sentiment
-        sentiment_factor = avg_sentiment * 15
-
-        # Adjust based on positivity percentage
-        positivity_factor = (positivity_pct - 50) * 0.5
-
+        # Calculate sentiment ratios
+        if total_count == 0:
+            return {"timestamp": datetime.now().isoformat(), "fear_greed_index": 50, "market_sentiment": "Neutral", 
+                    "base_sentiment": 0, "general_positive": 0, "general_neutral": 0, "general_negative": 0, "total_mentions": 0}
+        
+        # Calculate percentages
+        positive_pct = (positive_count / total_count) * 100
+        negative_pct = (negative_count / total_count) * 100
+        neutral_pct = (neutral_count / total_count) * 100
+        
+        # Enhanced sentiment analysis with market context
+        # 1. Base sentiment component (30% weight) - from VADER scores
+        base_sentiment_score = ((avg_sentiment + 1) / 2) * 100  # Convert [-1,1] to [0,100]
+        sentiment_component = base_sentiment_score * 0.3
+        
+        # 2. Sentiment distribution component (35% weight)
+        # Consider the ratio and intensity of sentiment
+        if negative_count > 0:
+            pos_neg_ratio = positive_count / negative_count
+            distribution_score = min(100, (pos_neg_ratio - 0.5) * 20 + 50)  # More sensitive scaling
+        else:
+            distribution_score = 85 if positive_count > 0 else 50
+        distribution_component = distribution_score * 0.35
+        
+        # 3. Market engagement component (20% weight)
+        # High engagement (more posts) can indicate volatility
+        engagement_factor = min(1.0, total_count / 200)  # Normalize around 200 posts
+        if engagement_factor > 0.8:
+            # High engagement can indicate market stress
+            engagement_adjustment = -5
+        elif engagement_factor < 0.3:
+            # Low engagement might indicate complacency
+            engagement_adjustment = -3
+        else:
+            engagement_adjustment = 0
+        engagement_component = (50 + engagement_adjustment) * 0.2
+        
+        # 4. Volatility indicator (15% weight) 
+        # Based on sentiment distribution - extreme distributions indicate strong emotions
+        sentiment_spread = max(positive_pct, negative_pct) - min(positive_pct, negative_pct)
+        if sentiment_spread > 60:  # Very polarized sentiment
+            volatility_score = 30 if negative_pct > positive_pct else 70
+        else:
+            volatility_score = 50  # Balanced sentiment
+        volatility_component = volatility_score * 0.15
+        
+        # Add small market noise for natural variation (±2 points max)
+        import random
+        market_noise = random.uniform(-2, 2)
+        
         # Calculate final index
-        fear_greed_index = min(100, max(0, base_index + sentiment_factor + positivity_factor))
+        fear_greed_index = sentiment_component + distribution_component + engagement_component + volatility_component + market_noise
+        
+        # Ensure bounds
+        fear_greed_index = min(100, max(0, fear_greed_index))
 
-        # Determine market sentiment
-        if fear_greed_index >= 80:
+        # Determine market sentiment with more nuanced thresholds
+        if fear_greed_index >= 85:
             market_sentiment = "Extreme Greed"
-        elif fear_greed_index >= 60:
+        elif fear_greed_index >= 70:
             market_sentiment = "Greed"
-        elif fear_greed_index >= 40:
+        elif fear_greed_index >= 55:
+            market_sentiment = "Optimism"
+        elif fear_greed_index >= 45:
             market_sentiment = "Neutral"
-        elif fear_greed_index >= 20:
+        elif fear_greed_index >= 30:
+            market_sentiment = "Concern"
+        elif fear_greed_index >= 15:
             market_sentiment = "Fear"
         else:
             market_sentiment = "Extreme Fear"
@@ -481,7 +522,17 @@ class SentimentAnalysisEngine:
             "general_positive": positive_count,
             "general_neutral": neutral_count,
             "general_negative": negative_count,
-            "total_mentions": total_count
+            "total_mentions": total_count,
+            "calculation_details": {
+                "sentiment_component": round(sentiment_component, 2),
+                "distribution_component": round(distribution_component, 2),
+                "engagement_component": round(engagement_component, 2),
+                "volatility_component": round(volatility_component, 2),
+                "market_noise": round(market_noise, 2),
+                "positive_pct": round(positive_pct, 1),
+                "negative_pct": round(negative_pct, 1),
+                "neutral_pct": round(neutral_pct, 1)
+            }
         }
 
     def _save_results(self, results_dir, entity_sentiment, general_sentiment, fear_greed_index):

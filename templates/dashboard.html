@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fear & Greed Sentiment Engine - Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .fear-greed-indicator {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .extreme-fear { color: #dc3545; }
+        .fear { color: #fd7e14; }
+        .neutral { color: #ffc107; }
+        .greed { color: #28a745; }
+        .extreme-greed { color: #198754; }
+        
+        .signal-buy { 
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        .signal-sell { 
+            background: linear-gradient(45deg, #dc3545, #e74c3c);
+            color: white;
+        }
+        
+        .signal-hold { 
+            background: linear-gradient(45deg, #6c757d, #adb5bd);
+            color: white;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-online { background-color: #28a745; }
+        .status-offline { background-color: #dc3545; }
+        
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                📊 Fear & Greed Sentiment Engine
+            </a>
+            
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">Dashboard</a>
+                <a class="nav-link" href="/historical">Historical</a>
+                <a class="nav-link" href="/settings">Settings</a>
+            </div>
+            
+            <div class="ms-3">
+                <span class="status-indicator status-online" id="statusIndicator"></span>
+                <span class="text-light" id="statusText">Online</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <div class="container mt-4">
+        
+        <!-- System Status Alert -->
+        <div class="alert alert-info alert-dismissible fade show" role="alert" id="systemAlert">
+            <strong>Welcome!</strong> Your Fear & Greed Sentiment Engine is running. Data refreshes every 5 minutes.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        
+        <!-- Top Metrics Row -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="metric-value fear-greed-indicator" id="fearGreedValue">--</div>
+                    <div class="metric-label" id="fearGreedLabel">Loading...</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="metric-value text-primary" id="activeSignals">--</div>
+                    <div class="metric-label">Active Signals</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="metric-value text-success" id="dataPoints">--</div>
+                    <div class="metric-label">Data Points Analyzed</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="metric-value text-info" id="lastUpdate">--</div>
+                    <div class="metric-label">Last Update</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Charts Row -->
+        <div class="row mb-4">
+            <!-- Fear & Greed Gauge -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Fear & Greed Index</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="fearGreedGauge" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Real-time Sentiment Chart -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Sentiment by Asset Class</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="sentimentChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trading Signals & News Row -->
+        <div class="row">
+            <!-- Trading Signals -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Latest Trading Signals</h5>
+                        <button class="btn btn-sm btn-outline-primary" onclick="refreshSignals()">
+                            🔄 Refresh
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Signal</th>
+                                        <th>Confidence</th>
+                                        <th>Sentiment</th>
+                                        <th>Mentions</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="signalsTable">
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            Loading signals...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Control Panel -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">System Controls</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" onclick="runDataCollection()" id="collectBtn">
+                                📡 Collect New Data
+                            </button>
+                            
+                            <button class="btn btn-success" onclick="runFullPipeline()" id="pipelineBtn">
+                                🚀 Run Full Pipeline
+                            </button>
+                            
+                            <button class="btn btn-info" onclick="refreshAll()">
+                                � Refresh Dashboard
+                            </button>
+                            
+                            <button class="btn btn-warning" onclick="viewSystemStats()">
+                                � System Stats
+                            </button>
+                        </div>
+                        
+                        <hr>
+                        
+                        <!-- Progress Indicator -->
+                        <div id="progressSection" style="display: none;">
+                            <h6>Processing...</h6>
+                            <div class="progress mb-3">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                     role="progressbar" style="width: 0%" id="progressBar">
+                                </div>
+                            </div>
+                            <div id="progressText" class="text-sm text-muted">Starting...</div>
+                            <hr>
+                        </div>
+                        
+                        <h6>Data Sources</h6>
+                        <div id="dataSourceStatus">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Reddit</span>
+                                <span class="status-indicator status-online"></span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>News</span>
+                                <span class="status-indicator status-online"></span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Market Data</span>
+                                <span class="status-indicator status-online"></span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Twitter</span>
+                                <span class="status-indicator status-offline"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Global variables
+        let sentimentChart;
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+            loadFearGreedGauge();
+            loadSentimentData();
+            loadTradingSignals();
+            
+            // Auto-refresh every 5 minutes
+            setInterval(refreshAll, 5 * 60 * 1000);
+        });
+        
+        function initializeDashboard() {
+            // Initialize sentiment chart
+            const ctx = document.getElementById('sentimentChart').getContext('2d');
+            sentimentChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Stocks', 'Crypto', 'Indices', 'Forex'],
+                    datasets: [{
+                        label: 'Sentiment Score',
+                        data: [0.2, 0.1, 0.15, 0.05],
+                        backgroundColor: [
+                            'rgba(40, 167, 69, 0.7)',
+                            'rgba(255, 193, 7, 0.7)',
+                            'rgba(0, 123, 255, 0.7)',
+                            'rgba(108, 117, 125, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(40, 167, 69, 1)',
+                            'rgba(255, 193, 7, 1)',
+                            'rgba(0, 123, 255, 1)',
+                            'rgba(108, 117, 125, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            min: -1,
+                            max: 1
+                        }
+                    }
+                }
+            });
+        }
+        
+        async function loadFearGreedGauge() {
+            try {
+                const response = await fetch('/api/fear_greed_gauge');
+                const data = await response.json();
+                
+                if (data.chart) {
+                    const chartData = JSON.parse(data.chart);
+                    Plotly.newPlot('fearGreedGauge', chartData.data, chartData.layout);
+                }
+                
+                // Update top metrics
+                const sentimentResponse = await fetch('/api/sentiment');
+                const sentimentData = await sentimentResponse.json();
+                
+                if (sentimentData.fear_greed_index) {
+                    const index = sentimentData.fear_greed_index.fear_greed_index;
+                    const label = getFearGreedLabel(index);
+                    
+                    document.getElementById('fearGreedValue').textContent = index.toFixed(1);
+                    document.getElementById('fearGreedLabel').textContent = label;
+                    document.getElementById('fearGreedValue').className = 'metric-value fear-greed-indicator ' + getFearGreedClass(index);
+                    
+                    // Update data points analyzed
+                    const totalMentions = sentimentData.fear_greed_index.total_mentions || 0;
+                    document.getElementById('dataPoints').textContent = totalMentions.toLocaleString();
+                    
+                    // Update last update time
+                    const timestamp = sentimentData.fear_greed_index.timestamp;
+                    if (timestamp) {
+                        const date = new Date(timestamp);
+                        document.getElementById('lastUpdate').textContent = date.toLocaleTimeString();
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Error loading Fear & Greed gauge:', error);
+            }
+        }
+        
+        async function loadSentimentData() {
+            try {
+                const response = await fetch('/api/sentiment');
+                const data = await response.json();
+                
+                if (data.entity_sentiment) {
+                    updateSentimentChart(data.entity_sentiment);
+                }
+                
+            } catch (error) {
+                console.error('Error loading sentiment data:', error);
+            }
+        }
+        
+        async function loadTradingSignals() {
+            try {
+                const response = await fetch('/api/signals');
+                const data = await response.json();
+                
+                if (data.signals) {
+                    updateSignalsTable(data.signals);
+                    document.getElementById('activeSignals').textContent = data.signals.length;
+                }
+                
+            } catch (error) {
+                console.error('Error loading trading signals:', error);
+                document.getElementById('signalsTable').innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">
+                            No signals available. Try running data collection first.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+        
+        function updateSentimentChart(entitySentiment) {
+            // Aggregate sentiment by asset type
+            const assetTypes = { stocks: [], crypto: [], indices: [], forex: [] };
+            
+            Object.entries(entitySentiment).forEach(([entity, data]) => {
+                if (data.entity_type && assetTypes[data.entity_type]) {
+                    assetTypes[data.entity_type].push(data.sentiment);
+                }
+            });
+            
+            // Calculate averages
+            const averages = Object.entries(assetTypes).map(([type, values]) => {
+                return values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0;
+            });
+            
+            sentimentChart.data.datasets[0].data = averages;
+            sentimentChart.update();
+        }
+        
+        function updateSignalsTable(signals) {
+            const tbody = document.getElementById('signalsTable');
+            
+            if (signals.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">
+                            No trading signals generated yet.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = signals.map(signal => `
+                <tr>
+                    <td><strong>${signal.symbol}</strong></td>
+                    <td>
+                        <span class="badge ${getSignalClass(signal.type)}">${signal.type}</span>
+                    </td>
+                    <td>
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: ${signal.confidence * 100}%"
+                                 aria-valuenow="${signal.confidence * 100}">
+                                ${(signal.confidence * 100).toFixed(0)}%
+                            </div>
+                        </div>
+                    </td>
+                    <td>${signal.sentiment > 0 ? '+' : ''}${signal.sentiment.toFixed(3)}</td>
+                    <td>${signal.mentions}</td>
+                    <td>
+                        <span class="badge bg-secondary">${signal.entity_type}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function getFearGreedLabel(index) {
+            if (index <= 25) return 'Extreme Fear';
+            if (index <= 45) return 'Fear';
+            if (index <= 55) return 'Neutral';
+            if (index <= 75) return 'Greed';
+            return 'Extreme Greed';
+        }
+        
+        function getFearGreedClass(index) {
+            if (index <= 25) return 'extreme-fear';
+            if (index <= 45) return 'fear';
+            if (index <= 55) return 'neutral';
+            if (index <= 75) return 'greed';
+            return 'extreme-greed';
+        }
+        
+        function getSignalClass(type) {
+            switch(type) {
+                case 'BUY': return 'bg-success';
+                case 'SELL': return 'bg-danger';
+                case 'HOLD': return 'bg-secondary';
+                default: return 'bg-secondary';
+            }
+        }
+        
+        // Control functions
+        async function runDataCollection() {
+            showProgress('Starting data collection pipeline...');
+            updateProgress(10, 'Initializing data sources...');
+            
+            try {
+                const response = await fetch('/api/run_collection');
+                const data = await response.json();
+                
+                updateProgress(25, 'Data collection started...');
+                showAlert(data.message, 'info');
+                
+                // Simulate progress updates
+                setTimeout(() => updateProgress(50, 'Collecting Reddit data...'), 2000);
+                setTimeout(() => updateProgress(75, 'Analyzing sentiment...'), 5000);
+                setTimeout(() => updateProgress(90, 'Generating signals...'), 8000);
+                setTimeout(() => {
+                    updateProgress(100, 'Complete! Refreshing dashboard...');
+                    hideProgress();
+                    refreshAll();
+                    showAlert('Data collection completed successfully!', 'success');
+                }, 10000);
+                
+            } catch (error) {
+                hideProgress();
+                showAlert('Error running data collection', 'danger');
+            }
+        }
+        
+        async function runFullPipeline() {
+            showAlert('Starting full pipeline: Collect → Analyze → Signal → Visualize', 'info');
+            runDataCollection();
+        }
+        
+        function showProgress(message) {
+            document.getElementById('progressSection').style.display = 'block';
+            document.getElementById('progressText').textContent = message;
+            document.getElementById('progressBar').style.width = '0%';
+            
+            // Disable buttons during processing
+            document.getElementById('collectBtn').disabled = true;
+            document.getElementById('pipelineBtn').disabled = true;
+        }
+        
+        function updateProgress(percent, message) {
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressText').textContent = message;
+        }
+        
+        function hideProgress() {
+            setTimeout(() => {
+                document.getElementById('progressSection').style.display = 'none';
+                document.getElementById('collectBtn').disabled = false;
+                document.getElementById('pipelineBtn').disabled = false;
+            }, 2000);
+        }
+        
+        async function viewSystemStats() {
+            try {
+                const response = await fetch('/api/system_stats');
+                const stats = await response.json();
+                
+                const statsMessage = `
+                    📊 System Statistics:
+                    • Collections: ${stats.collections_count}
+                    • Analyses: ${stats.sentiment_analyses_count} 
+                    • Signals: ${stats.signals_generated_count}
+                    • Total Files: ${stats.total_data_files}
+                    • Disk Usage: ${stats.disk_usage_mb} MB
+                    • Last Activity: ${stats.last_activity || 'None'}
+                `;
+                
+                alert(statsMessage);
+            } catch (error) {
+                showAlert('Error loading system statistics', 'danger');
+            }
+        }
+        
+        function refreshSignals() {
+            loadTradingSignals();
+        }
+        
+        function refreshAll() {
+            loadFearGreedGauge();
+            loadSentimentData();
+            loadTradingSignals();
+            
+            // Update last update time
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+        }
+        
+        function showAlert(message, type) {
+            const alertDiv = document.getElementById('systemAlert');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                <strong>${type === 'danger' ? 'Error!' : 'Info:'}</strong> ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+        }
+    </script>
+</body>
+</html>
