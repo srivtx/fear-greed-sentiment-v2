@@ -53,80 +53,28 @@
 
 ---
 
-## 🛠️ **Quick Setup Guide**
+## � Quick Start
 
-### **Step 1: Prerequisites**
-```bash
-# Required
-Python 3.8+ 
-pip (Python package manager)
-Git
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd fear-greed-sentiment-v2
+   ```
 
-# Recommended
-Virtual environment (venv/conda)
-4GB+ RAM for optimal performance
-```
+2. **Run the interactive quick start**
+   ```bash
+   chmod +x quick_start.sh
+   ./quick_start.sh
+   ```
 
-### **Step 2: Installation**
-```bash
-# Clone repository
-git clone https://github.com/your-username/fear-greed-sentiment-v2.git
-cd fear-greed-sentiment-v2
+3. **Choose your mode:**
+   - **Option 1**: Basic data collection and analysis
+   - **Option 2**: Start web dashboard (access at `http://localhost:5000`)
+   - **Option 4**: GoQuant real-time engine
+   - **Option 5**: GoQuant batch analysis
+   - **Option 8**: GoQuant full pipeline
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# venv\Scripts\activate   # Windows
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### **Step 3: Configuration**
-```bash
-# Copy example config
-cp config/config.json.example config/config.json
-
-# Edit with your API keys
-nano config/config.json
-```
-
-**Required API Keys** (optional - system works with sample data):
-```json
-{
-    "reddit": {
-        "client_id": "your_reddit_client_id",
-        "client_secret": "your_reddit_client_secret",
-        "user_agent": "SentimentBot/1.0"
-    },
-    "twitter": {
-        "bearer_token": "your_twitter_bearer_token"
-    },
-    "news": {
-        "api_key": "your_newsapi_key"
-    }
-}
-```
-
-### **Step 4: First Run**
-```bash
-# Collect initial data (generates fresh sentiment analysis)
-python main.py
-
-# Expected output:
-# ✅ Collected 172 Reddit posts
-# ✅ Generated Fear & Greed Index: 73.25 (Greed)
-# ✅ Analysis saved to data/sentiment_[timestamp]/
-```
-
-### **Step 5: Start Web Dashboard**
-```bash
-# Launch the web application
-python web_app.py
-
-# Dashboard available at: http://localhost:5000
-# 🎯 Auto-refreshes every 30 seconds with live data
-```
+4. **For immediate testing**: Select option 2 to start the web dashboard
 
 ---
 
@@ -198,55 +146,28 @@ python dashboard_validation.py
 
 ```
 fear-greed-sentiment-v2/
+├── � Core Engine Files
+│   ├── quick_start.sh              # Main entry point with GoQuant integration
+│   ├── goquant_main.py             # Advanced GoQuant engine
+│   ├── web_app.py                  # Flask web dashboard
+│   ├── main.py                     # Basic sentiment analysis
+│   └── requirements.txt            # Python dependencies
 │
-├── 🚀 SETUP & EXECUTION
-│   ├── main.py                    # 🎯 Main data collection & analysis
-│   ├── web_app.py                # 🌐 Flask web dashboard
-│   ├── engine.py                 # ⚙️ Core sentiment engine
-│   └── requirements.txt          # 📦 Python dependencies
-│
-├── 🧪 TESTING & VALIDATION
-│   ├── test_comprehensive_suite.py   # 🔬 Full test suite
-│   ├── dashboard_validation.py       # 📊 Data validation
-│   └── IMPROVEMENTS.md               # 🎯 Roadmap & suggestions
-│
-├── ⚙️ CONFIGURATION
-│   ├── config/
-│   │   ├── config.json           # 🔑 API keys & settings
-│   │   └── config.py             # 📝 Configuration loader
-│
-├── 📡 DATA COLLECTION
-│   ├── data_collection/
-│   │   ├── collector.py          # 🎭 Main data orchestrator
-│   │   ├── reddit/               # 🟠 Reddit API integration
-│   │   ├── twitter/              # 🔵 Twitter API integration
-│   │   ├── news/                 # 📰 News API integration
-│   │   └── financial/            # 📈 Market data collection
-│
-├── 🧠 SENTIMENT ANALYSIS
-│   ├── sentiment_analysis/
-│   │   ├── analyzer.py           # 🎯 Main sentiment engine
-│   │   ├── sentiment_analyzer.py # 📊 VADER sentiment analysis
-│   │   └── preprocessor.py       # 🧹 Text cleaning & preprocessing
-│
-├── 📊 SIGNAL GENERATION
-│   ├── signal_generation/
-│   │   ├── signal_generator.py   # 🚦 Trading signal generation
-│   │   └── correlation_engine.py # 🔗 Cross-asset correlation
-│
-├── 🌐 WEB INTERFACE
-│   ├── templates/
-│   │   └── dashboard.html        # 📱 Main dashboard template
-│   ├── static/
-│   │   ├── css/                  # 🎨 Stylesheets
-│   │   └── js/                   # ⚡ JavaScript functions
-│
-└── 💾 DATA STORAGE
-    └── data/
-        ├── collection_*/         # 📥 Raw collected data
-        ├── sentiment_*/          # 🧠 Processed sentiment results
-        └── signals/              # 🚦 Generated trading signals
+├── 📁 config/                      # Configuration management
+├── 📁 data/                        # Data storage (auto-generated)
+├── 📁 data_collection/             # Data collection modules
+├── 📁 sentiment_analysis/          # Sentiment analysis modules
+├── 📁 signal_generation/           # Trading signal generation
+├── 📁 utils/                       # Utility modules
+├── 📁 backtesting/                 # Backtesting framework
+├── � templates/                   # HTML templates
+├── 📁 scripts/                     # Utility scripts
+├── 📁 tests/                       # Test files
+├── 📁 docs/                        # Documentation
+└── 📁 logs/                        # Log files
 ```
+
+For detailed project structure, see [`docs/PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md)
 
 ---
 

@@ -590,7 +590,7 @@ def main():
         elif args.mode == "legacy":
             # Run original engine for compatibility
             legacy_engine = FearGreedEngine()
-            legacy_engine.run_full_cycle()
+            legacy_engine.run_once(skip_twitter=args.no_twitter)
         
     except KeyboardInterrupt:
         logger.info("Operation interrupted by user")
