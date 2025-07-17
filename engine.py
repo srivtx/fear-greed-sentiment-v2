@@ -88,6 +88,10 @@ class FearGreedEngine:
 
             # Sleep to avoid high CPU usage
             time.sleep(10)
+            
+            # Log status every minute to show it's alive
+            if int(now.timestamp()) % 60 == 0:
+                logger.info(f"Engine running... Next collection in {int(self.collection_interval - (now - last_collection).total_seconds())}s")
 
     def stop(self):
         """Stop the engine"""

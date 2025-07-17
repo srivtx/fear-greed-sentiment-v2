@@ -19,6 +19,12 @@ class MarketDataCollector:
 
     def __init__(self):
         self.config = Config()
+        
+        # Known problematic symbols that should be skipped
+        self.blacklisted_symbols = ["^SPY", "^DIA", "^QQQ"]  # These fail in Yahoo Finance
+        
+        self.logger = logging.getLogger(__name__)
+        
         self.targets = self._get_targets()
         self.data_path = Path(self.config.get("data_storage.path", "data"))
         self.cache_dir = self.data_path / "market_cache"
@@ -47,6 +53,8 @@ class MarketDataCollector:
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
         ]
+        
+        self.logger.info(f"MarketDataCollector initialized with crypto API: {self.crypto_api_url}")
 
     def _get_targets(self):
         """Get financial targets to track"""
@@ -70,6 +78,10 @@ class MarketDataCollector:
         # Get stocks and indices
         stocks = self.config.get("targets.stocks", ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"])
         indices = self.config.get("targets.indices", ["SPY", "QQQ", "DIA"])
+        
+        # Filter out blacklisted symbols
+        stocks = [s for s in stocks if s not in self.blacklisted_symbols]
+        indices = [i for i in indices if i not in self.blacklisted_symbols]
 
         targets = {
             "cryptocurrencies": cryptos,
@@ -86,7 +98,7 @@ class MarketDataCollector:
         Returns:
             dict: DataFrame of current market data by symbol
         """
-        logger.info("Collecting current market data")
+        self.logger.info("Collecting current market data")
 
         market_data = {}
 
@@ -108,7 +120,7 @@ class MarketDataCollector:
         for index in self.targets["indices"]:
             self._collect_index_from_yahoo(index, market_data)
 
-        logger.info(f"Collected current market data for {len(market_data)} symbols")
+        self.logger.info(f"Collected current market data for {len(market_data)} symbols")
         return market_data
 
     def _collect_crypto_data_coingecko(self):
@@ -156,46 +168,53 @@ class MarketDataCollector:
                 "sparkline": "false"
             }
 
-            response = requests.get(url, params=params, headers=headers)
+            response = requests.get(url, params=params, headers=headers, timeout=10)
 
             if response.status_code == 200:
                 coin_data = response.json()
-
-                for coin in coin_data:
-                    # Convert to pandas DataFrame in format similar to Yahoo Finance
-                    now = datetime.now()
-                    data_dict = {
-                        "Date": [now],
-                        "Open": [coin["current_price"]],
-                        "High": [coin["high_24h"] if "high_24h" in coin else coin["current_price"]],
-                        "Low": [coin["low_24h"] if "low_24h" in coin else coin["current_price"]],
-                        "Close": [coin["current_price"]],
-                        "Volume": [coin["total_volume"] if "total_volume" in coin else 0],
-                        "Symbol": [f"{coin['symbol'].upper()}-USD"],
-                        "Type": ["crypto"],
-                        "Datetime": [now],
-                        "Price_Change_24h": [coin.get("price_change_24h", 0)],
-                        "Price_Change_Percentage_24h": [coin.get("price_change_percentage_24h", 0)],
-                        "Market_Cap": [coin.get("market_cap", 0)]
-                    }
-
-                    df = pd.DataFrame(data_dict)
-
-                    # Get symbol back to uppercase
-                    symbol = coin["symbol"].upper()
-
-                    # Add to crypto data dictionary
-                    crypto_data[f"{symbol}-USD"] = df
-
-                    # Also cache the data
-                    self._cache_market_data(f"{symbol}-USD", df)
-
-                logger.info(f"Successfully collected data for {len(coin_data)} cryptocurrencies from CoinGecko")
+            elif response.status_code == 429:
+                self.logger.warning("CoinGecko API rate limit hit - falling back to mock data")
+                return {}
             else:
-                logger.warning(f"CoinGecko API returned status code {response.status_code}")
+                self.logger.warning(f"CoinGecko API returned status {response.status_code} - falling back to mock data")
+                return {}
+
+            # Add small delay to avoid rate limiting
+            time.sleep(0.5)
+
+            for coin in coin_data:
+                # Convert to pandas DataFrame in format similar to Yahoo Finance
+                now = datetime.now()
+                data_dict = {
+                    "Date": [now],
+                    "Open": [coin["current_price"]],
+                    "High": [coin["high_24h"] if "high_24h" in coin else coin["current_price"]],
+                    "Low": [coin["low_24h"] if "low_24h" in coin else coin["current_price"]],
+                    "Close": [coin["current_price"]],
+                    "Volume": [coin["total_volume"] if "total_volume" in coin else 0],
+                    "Symbol": [f"{coin['symbol'].upper()}-USD"],
+                    "Type": ["crypto"],
+                    "Datetime": [now],
+                    "Price_Change_24h": [coin.get("price_change_24h", 0)],
+                    "Price_Change_Percentage_24h": [coin.get("price_change_percentage_24h", 0)],
+                    "Market_Cap": [coin.get("market_cap", 0)]
+                }
+
+                df = pd.DataFrame(data_dict)
+
+                # Get symbol back to uppercase
+                symbol = coin["symbol"].upper()
+
+                # Add to crypto data dictionary
+                crypto_data[f"{symbol}-USD"] = df
+
+                # Also cache the data
+                self._cache_market_data(f"{symbol}-USD", df)
+
+            self.logger.info(f"Successfully collected data for {len(coin_data)} cryptocurrencies from CoinGecko")
 
         except Exception as e:
-            logger.error(f"Error collecting cryptocurrency data from CoinGecko: {e}")
+            self.logger.error(f"Error collecting cryptocurrency data from CoinGecko: {e}")
 
         return crypto_data
 
@@ -211,7 +230,7 @@ class MarketDataCollector:
                 config = {'User-Agent': random.choice(self.user_agents)}
                 yf.set_tz_cache_location(str(self.cache_dir))
 
-                ticker = yf.Ticker(symbol_format, session=requests.Session())
+                ticker = yf.Ticker(symbol_format)
                 data = ticker.history(period="1d")
 
                 if not data.empty:
@@ -221,14 +240,14 @@ class MarketDataCollector:
                     data["Type"] = "crypto"
                     data["Datetime"] = data["Date"]  # Rename for consistency
                     market_data[symbol_format] = data
-                    logger.info(f"Collected current data for {crypto} as {symbol_format}")
+                    self.logger.info(f"Collected current data for {crypto} as {symbol_format}")
 
                     # Cache the data
                     self._cache_market_data(symbol_format, data)
                     return True
 
             except Exception as e:
-                logger.debug(f"Failed to get {crypto} with format {symbol_format}: {e}")
+                self.logger.debug(f"Failed to get {crypto} with format {symbol_format}: {e}")
                 continue
 
         # If we got here, we couldn't get data in any format
@@ -236,10 +255,10 @@ class MarketDataCollector:
         cached_data = self._load_from_cache(crypto + "-USD")
         if cached_data is not None:
             market_data[crypto + "-USD"] = cached_data
-            logger.warning(f"Using cached data for {crypto}")
+            self.logger.warning(f"Using cached data for {crypto}")
             return True
 
-        logger.warning(f"No data found for {crypto} in any format")
+        self.logger.warning(f"No data found for {crypto} in any format")
         return False
 
     def _collect_stock_from_yahoo(self, stock, market_data):
@@ -250,11 +269,10 @@ class MarketDataCollector:
             symbol = f"{stock}{region}"
 
             try:
-                # Configure yfinance with random user agent
-                config = {'User-Agent': random.choice(self.user_agents)}
+                # Configure yfinance cache location
                 yf.set_tz_cache_location(str(self.cache_dir))
 
-                ticker = yf.Ticker(symbol, session=requests.Session())
+                ticker = yf.Ticker(symbol)
                 data = ticker.history(period="1d")
 
                 if not data.empty:
@@ -264,25 +282,25 @@ class MarketDataCollector:
                     data["Type"] = "stock"
                     data["Datetime"] = data["Date"]
                     market_data[stock] = data
-                    logger.info(f"Collected current data for {stock} using {symbol}")
+                    self.logger.info(f"Collected current data for {stock} using {symbol}")
 
                     # Cache the data
                     self._cache_market_data(stock, data)
                     return True
             except Exception as e:
-                logger.debug(f"Failed to get {symbol}: {e}")
+                self.logger.debug(f"Failed to get {symbol}: {e}")
                 continue
 
         # If we got here, try to use cached data
         cached_data = self._load_from_cache(stock)
         if cached_data is not None:
             market_data[stock] = cached_data
-            logger.warning(f"Using cached data for {stock}")
+            self.logger.warning(f"Using cached data for {stock}")
             return True
 
         # Generate mock data as last resort
         market_data[stock] = self._generate_mock_stock_data(stock)
-        logger.warning(f"Using mock data for {stock}")
+        self.logger.warning(f"Using mock data for {stock}")
         return False
 
     def _collect_index_from_yahoo(self, index, market_data):
@@ -297,7 +315,7 @@ class MarketDataCollector:
                 config = {'User-Agent': random.choice(self.user_agents)}
                 yf.set_tz_cache_location(str(self.cache_dir))
 
-                ticker = yf.Ticker(symbol_format, session=requests.Session())
+                ticker = yf.Ticker(symbol_format)
                 data = ticker.history(period="1d")
 
                 if not data.empty:
@@ -307,25 +325,25 @@ class MarketDataCollector:
                     data["Type"] = "index"
                     data["Datetime"] = data["Date"]
                     market_data[index] = data
-                    logger.info(f"Collected current data for {index} using {symbol_format}")
+                    self.logger.info(f"Collected current data for {index} using {symbol_format}")
 
                     # Cache the data
                     self._cache_market_data(index, data)
                     return True
             except Exception as e:
-                logger.debug(f"Failed to get {symbol_format}: {e}")
+                self.logger.debug(f"Failed to get {symbol_format}: {e}")
                 continue
 
         # Try to use cached data
         cached_data = self._load_from_cache(index)
         if cached_data is not None:
             market_data[index] = cached_data
-            logger.warning(f"Using cached data for {index}")
+            self.logger.warning(f"Using cached data for {index}")
             return True
 
         # Generate mock data as last resort
         market_data[index] = self._generate_mock_index_data(index)
-        logger.warning(f"Using mock data for {index}")
+        self.logger.warning(f"Using mock data for {index}")
         return False
 
     def _cache_market_data(self, symbol, data):
@@ -334,7 +352,7 @@ class MarketDataCollector:
             cache_file = self.cache_dir / f"{symbol}_cache.csv"
             data.to_csv(cache_file, index=False)
         except Exception as e:
-            logger.error(f"Error caching data for {symbol}: {e}")
+            self.logger.error(f"Error caching data for {symbol}: {e}")
 
     def _load_from_cache(self, symbol):
         """Load market data from cache"""
@@ -349,7 +367,7 @@ class MarketDataCollector:
                 if cache_age < timedelta(hours=24):
                     return data
                 else:
-                    logger.warning(f"Cache for {symbol} is too old ({cache_age.total_seconds() / 3600:.1f} hours)")
+                    self.logger.warning(f"Cache for {symbol} is too old ({cache_age.total_seconds() / 3600:.1f} hours)")
                     return None
             except Exception:
                 return None
@@ -563,7 +581,7 @@ class MarketDataCollector:
                 config = {'User-Agent': random.choice(self.user_agents)}
                 yf.set_tz_cache_location(str(self.cache_dir))
 
-                ticker = yf.Ticker(symbol_format, session=requests.Session())
+                ticker = yf.Ticker(symbol_format)
                 data = ticker.history(period=period)
 
                 if not data.empty:
@@ -595,7 +613,7 @@ class MarketDataCollector:
                 config = {'User-Agent': random.choice(self.user_agents)}
                 yf.set_tz_cache_location(str(self.cache_dir))
 
-                ticker = yf.Ticker(symbol, session=requests.Session())
+                ticker = yf.Ticker(symbol)
                 data = ticker.history(period=period)
 
                 if not data.empty:
@@ -630,7 +648,7 @@ class MarketDataCollector:
                 config = {'User-Agent': random.choice(self.user_agents)}
                 yf.set_tz_cache_location(str(self.cache_dir))
 
-                ticker = yf.Ticker(symbol_format, session=requests.Session())
+                ticker = yf.Ticker(symbol_format)
                 data = ticker.history(period=period)
 
                 if not data.empty:

@@ -41,12 +41,8 @@ def main():
     if args.mode == "run":
         if args.continuous:
             logger.info("Starting Fear & Greed Engine in continuous mode")
-            engine.start(skip_twitter=args.no_twitter)
-
-            # Keep running until interrupted
             try:
-                while True:
-                    time.sleep(1)
+                engine.start(skip_twitter=args.no_twitter)
             except KeyboardInterrupt:
                 logger.info("Keyboard interrupt received. Stopping engine...")
                 engine.stop()

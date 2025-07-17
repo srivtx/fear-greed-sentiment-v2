@@ -153,8 +153,12 @@ class SignalGenerator:
                         signal_type = "BUY" if sentiment_score > 0 else "SELL"
 
                         # Calculate confidence based on sentiment and mentions
-                        confidence = min(0.9, (sentiment_magnitude * 0.7) +
-                                         (min(mentions, 50) / 50 * 0.3))
+                        # Improved formula: gives more weight to mentions and higher base confidence
+                        sentiment_component = sentiment_magnitude * 0.5  # Reduced from 0.7
+                        mentions_component = min(mentions, 30) / 30 * 0.4  # Increased from 0.3
+                        base_confidence = 0.2  # Base confidence for any qualifying signal
+                        
+                        confidence = min(0.9, base_confidence + sentiment_component + mentions_component)
 
                         # Skip if confidence is too low
                         if confidence < self.confidence_threshold:

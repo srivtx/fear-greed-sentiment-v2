@@ -21,7 +21,7 @@
   "targets": {
     "cryptocurrencies": ["BTC", "ETH", "XRP", "ADA", "SOL"],
     "stocks": ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"],
-    "indices": ["SPY", "QQQ", "DIA"]
+    "indices": ["SPY", "QQQ", "DIA", "^QQQ"]
   },
   "data_storage": {
     "path": "data"
@@ -33,8 +33,8 @@
     "log_level": "INFO"
   },
   "signals": {
-    "sentiment_threshold": 0.25,
-    "confidence_threshold": 0.5,
+    "sentiment_threshold": 0.08,
+    "confidence_threshold": 0.2,
     "minimum_mentions": 3
   }
 }
