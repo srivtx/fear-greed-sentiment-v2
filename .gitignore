@@ -59,3 +59,4 @@ htmlcov/
 
 # Documentation builds
 docs/_build/
+.env
