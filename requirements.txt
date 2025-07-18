@@ -20,6 +20,9 @@ pycoingecko>=3.1.0
 # Async and performance
 aiohttp>=3.8.0
 
+# Web framework
+flask>=3.0.0
+
 # Utilities
 tqdm>=4.65.0
 requests>=2.28.2

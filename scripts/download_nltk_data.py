@@ -20,7 +20,7 @@ def download_nltk_data():
     
     print("🚀 Downloading NLTK data packages...")
     
-    packages = ['vader_lexicon', 'punkt', 'stopwords', 'wordnet', 'averaged_perceptron_tagger']
+    packages = ['vader_lexicon', 'punkt', 'punkt_tab', 'stopwords', 'wordnet', 'averaged_perceptron_tagger']
     
     for package in packages:
         try:
