@@ -93,9 +93,9 @@ python web_app.py
 
 ---
 
-## 📊 **Understanding the Fear & Greed Index**
+## **Understanding the Fear & Greed Index**
 
-### **📐 Calculation Formula**
+### ** Calculation Formula**
 The Fear & Greed Index (0-100) combines multiple sentiment factors:
 
 1. ** Sentiment Component (30%)** - VADER sentiment polarity analysis
@@ -104,14 +104,14 @@ The Fear & Greed Index (0-100) combines multiple sentiment factors:
 4. ** Volatility Component (15%)** - Sentiment distribution variance
 5. ** Market Noise (±2%)** - Natural variation for realism
 
-### **📏 Interpretation Scale**
+### ** Interpretation Scale**
 - **0-25**:  **Extreme Fear** - Heavy selling pressure, potential buying opportunity
 - **26-45**: **Fear** - Market uncertainty, cautious sentiment
 - **46-55**:  **Neutral** - Balanced market sentiment
 - **56-75**:  **Greed** - Optimistic market, potential caution advised
 - **76-100**:  **Extreme Greed** - Market euphoria, potential selling opportunity
 
-### **📡 Data Sources**
+### ** Data Sources**
 - ** Reddit**: r/Bitcoin, r/CryptoCurrency, r/wallstreetbets, r/investing
 - ** Twitter**: Crypto and finance-related tweets (rate-limited)
 - ** News**: Financial news from major outlets (NewsAPI)
