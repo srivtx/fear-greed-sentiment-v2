@@ -1,4 +1,4 @@
-# 🚀 Fear & Greed Sentiment Engine
+# Fear & Greed Sentiment Engine
 
 <div align="center">
 
@@ -15,36 +15,36 @@
 
 ---
 
-## 📊 **Live Demo**
+##  **Live Demo**
 
-🌐 **Web Dashboard**: http://localhost:5000 (after setup)
+**Web Dashboard**: http://localhost:5000 (after setup)
 
 **Current Status**: Fear & Greed Index: 67.3 (Greed) | 247 data points analyzed | Updated: 2025-07-17 14:30
 
 ---
 
-## 🎯 **Features**
+## **Features**
 
-### **🧠 Real-time Sentiment Analysis**
+### ** Real-time Sentiment Analysis**
 - Processes Reddit posts, Twitter feeds, and news articles
 - Uses advanced VADER sentiment analysis with financial lexicons
 - Analyzes 200+ data points in real-time
 - Tracks sentiment for 10+ cryptocurrencies and stocks
 
-### **📈 Fear & Greed Index**
+### ** Fear & Greed Index**
 - Proprietary algorithm calculating market sentiment (0-100 scale)
 - Components: Sentiment (30%), Distribution (35%), Engagement (20%), Volatility (15%)
 - Real-time updates with current timestamps
 - Historical trend tracking and backtesting
 
-### **🌐 Live Web Dashboard**
+### ** Live Web Dashboard**
 - Auto-refreshes every 30 seconds with fresh data
 - Interactive Fear & Greed gauge visualization
 - Historical charts showing sentiment trends
 - Asset-specific sentiment breakdown
 - System performance statistics
 
-### **📡 RESTful API**
+### ** RESTful API**
 - `/api/sentiment` - Current sentiment analysis and Fear & Greed Index
 - `/api/signals` - Trading signals based on sentiment
 - `/api/historical_data` - Historical sentiment trends
@@ -53,7 +53,7 @@
 
 ---
 
-## 🚀 **Quick Start**
+##  **Quick Start**
 
 1. **Clone the repository**
    ```bash
@@ -98,28 +98,28 @@ python web_app.py
 ### **📐 Calculation Formula**
 The Fear & Greed Index (0-100) combines multiple sentiment factors:
 
-1. **🎯 Sentiment Component (30%)** - VADER sentiment polarity analysis
-2. **⚖️ Distribution Component (35%)** - Positive/negative post ratio
-3. **📢 Engagement Component (20%)** - Volume and activity metrics  
-4. **📊 Volatility Component (15%)** - Sentiment distribution variance
-5. **🎲 Market Noise (±2%)** - Natural variation for realism
+1. ** Sentiment Component (30%)** - VADER sentiment polarity analysis
+2. **Distribution Component (35%)** - Positive/negative post ratio
+3. ** Engagement Component (20%)** - Volume and activity metrics  
+4. ** Volatility Component (15%)** - Sentiment distribution variance
+5. ** Market Noise (±2%)** - Natural variation for realism
 
 ### **📏 Interpretation Scale**
-- **0-25**: 😰 **Extreme Fear** - Heavy selling pressure, potential buying opportunity
-- **26-45**: 😟 **Fear** - Market uncertainty, cautious sentiment
-- **46-55**: 😐 **Neutral** - Balanced market sentiment
-- **56-75**: 😊 **Greed** - Optimistic market, potential caution advised
-- **76-100**: 🤑 **Extreme Greed** - Market euphoria, potential selling opportunity
+- **0-25**:  **Extreme Fear** - Heavy selling pressure, potential buying opportunity
+- **26-45**: **Fear** - Market uncertainty, cautious sentiment
+- **46-55**:  **Neutral** - Balanced market sentiment
+- **56-75**:  **Greed** - Optimistic market, potential caution advised
+- **76-100**:  **Extreme Greed** - Market euphoria, potential selling opportunity
 
 ### **📡 Data Sources**
-- **🟠 Reddit**: r/Bitcoin, r/CryptoCurrency, r/wallstreetbets, r/investing
-- **🔵 Twitter**: Crypto and finance-related tweets (rate-limited)
-- **📰 News**: Financial news from major outlets (NewsAPI)
-- **📈 Market Data**: Real-time price and volume data
+- ** Reddit**: r/Bitcoin, r/CryptoCurrency, r/wallstreetbets, r/investing
+- ** Twitter**: Crypto and finance-related tweets (rate-limited)
+- ** News**: Financial news from major outlets (NewsAPI)
+- ** Market Data**: Real-time price and volume data
 
 ---
 
-## 🧪 **Testing & Validation**
+##  **Testing & Validation**
 
 ### **🔍 Run Comprehensive Tests**
 ```bash
@@ -127,14 +127,14 @@ The Fear & Greed Index (0-100) combines multiple sentiment factors:
 python -m pytest tests/ -v
 
 # Expected output:
-# ✅ API Endpoints: All 5 endpoints responding
-# ✅ Data Structure: Valid JSON with required fields
-# ✅ Data Freshness: Timestamps within 1 hour
-# ✅ Calculation Components: All components present and valid
-# ✅ Performance: API responses <1000ms
+# API Endpoints: All 5 endpoints responding
+# Data Structure: Valid JSON with required fields
+# Data Freshness: Timestamps within 1 hour
+# Calculation Components: All components present and valid
+# Performance: API responses <1000ms
 ```
 
-### **📋 Validate System Integration**
+### ** Validate System Integration**
 ```bash
 # Test system components
 python tests/test_system_integration.py
@@ -147,7 +147,7 @@ curl http://localhost:5000/api/sentiment
 curl http://localhost:5000/api/signals
 ```
 
-### **🌐 Manual Web Testing Checklist**
+### **Manual Web Testing Checklist**
 1. ✓ Navigate to http://localhost:5000
 2. ✓ Fear & Greed gauge displays correct value
 3. ✓ Timestamp shows recent time (within last hour)
@@ -158,11 +158,11 @@ curl http://localhost:5000/api/signals
 
 ---
 
-## 📁 **Project Structure**
+##  **Project Structure**
 
 ```
 fear-greed-sentiment-v2/
-├── 🚀 Core Engine Files
+├──  Core Engine Files
 │   ├── quick_start.sh              # Main entry point with GoQuant integration
 │   ├── goquant_main.py             # Advanced GoQuant engine
 │   ├── web_app.py                  # Flask web dashboard
@@ -170,56 +170,56 @@ fear-greed-sentiment-v2/
 │   ├── real_time_engine.py         # Real-time processing engine
 │   └── requirements.txt            # Python dependencies
 │
-├── 📁 config/                      # Configuration management
+├──  config/                      # Configuration management
 │   ├── config.json.example         # Configuration template
 │   └── config.py                   # Configuration loader
 │
-├── 📁 data/                        # Data storage (auto-generated)
+├──  data/                        # Data storage (auto-generated)
 │   ├── collection_*/               # Data collection results
 │   ├── sentiment_*/                # Sentiment analysis results
 │   └── signals/                    # Trading signals
 │
-├── 📁 data_collection/             # Data collection modules
+├──  data_collection/             # Data collection modules
 │   ├── collector.py                # Main data collector
 │   ├── reddit/                     # Reddit API integration
 │   ├── twitter/                    # Twitter API integration
 │   ├── news/                       # News API integration
 │   └── financial/                  # Financial data sources
 │
-├── 📁 sentiment_analysis/          # Sentiment analysis modules
+├──  sentiment_analysis/          # Sentiment analysis modules
 │   ├── advanced_sentiment_analyzer.py  # Advanced sentiment analysis
 │   ├── analyzer.py                 # Core sentiment analyzer
 │   ├── preprocessor.py             # Text preprocessing
 │   └── entitiy_recognition.py      # Entity recognition
 │
-├── 📁 signal_generation/           # Trading signal generation
+├── signal_generation/           # Trading signal generation
 │   ├── advanced_signal_generator.py    # Advanced signal generation
 │   ├── signal_generator.py         # Core signal generator
 │   └── correlation_engine.py       # Correlation analysis
 │
-├── 📁 backtesting/                 # Backtesting framework
+├──  backtesting/                 # Backtesting framework
 │   └── backtester.py               # Backtesting engine
 │
-├── 📁 templates/                   # HTML templates
+├──  templates/                   # HTML templates
 │   └── dashboard.html              # Web dashboard template
 │
-├── 📁 static/                      # Static web assets
+├──  static/                      # Static web assets
 │   ├── css/                        # Stylesheets
 │   └── js/                         # JavaScript files
 │
-├── 📁 scripts/                     # Utility scripts
+├──  scripts/                     # Utility scripts
 │   ├── download_nltk_data.py       # NLTK data downloader
 │   └── real_world_demo.py          # Demo script
 │
-├── 📁 tests/                       # Test files
+├──  tests/                       # Test files
 │   ├── test_system_integration.py  # System integration tests
 │   ├── test_web_dashboard.py       # Web dashboard tests
 │   └── test_sentiment_analysis.py  # Sentiment analysis tests
 │
-├── 📁 utils/                       # Utility modules
-├── 📁 logs/                        # Log files
+├──  utils/                       # Utility modules
+├──  logs/                        # Log files
 │
-└── 📁 documentation/               # Complete documentation
+└──  documentation/               # Complete documentation
     ├── README.md                   # Documentation overview
     ├── api/                        # API documentation
     ├── beginner_guide/             # Beginner's guide
@@ -234,9 +234,9 @@ For detailed project structure, see [`documentation/README.md`](documentation/RE
 
 ---
 
-## 🔄 **Usage Examples**
+##  **Usage Examples**
 
-### **📊 Python API Usage**
+### ** Python API Usage**
 ```python
 import requests
 
@@ -262,7 +262,7 @@ print(f"Last Updated: {timestamp}")
 # Last Updated: 2025-07-17T14:30:22Z
 ```
 
-### **💻 Command Line Usage**
+### ** Command Line Usage**
 ```bash
 # Get Fear & Greed Index quickly
 curl -s http://localhost:5000/api/sentiment | jq '.fear_greed_index.fear_greed_index'
@@ -279,7 +279,7 @@ curl -s http://localhost:5000/api/signals | jq '.signals[]'
 curl -s http://localhost:5000/api/system_stats | jq '.'
 ```
 
-### **⏰ Automated Collection**
+### ** Automated Collection**
 ```bash
 # Run collection every 30 minutes
 while true; do
@@ -291,9 +291,9 @@ done
 
 ---
 
-## 🐛 **Troubleshooting**
+##  **Troubleshooting**
 
-### **❌ Common Issues & Solutions**
+### ** Common Issues & Solutions**
 
 #### **"No sentiment data available"**
 ```bash
@@ -305,7 +305,7 @@ ls -la data/sentiment_*
 # Should show recent sentiment directories
 ```
 
-#### **🔌 "Port 5000 already in use"**
+#### ** "Port 5000 already in use"**
 ```bash
 # Find and stop conflicting process
 lsof -ti:5000 | xargs kill -9
@@ -314,12 +314,12 @@ lsof -ti:5000 | xargs kill -9
 python web_app.py --port 8080
 ```
 
-#### **📡 API Rate Limits Exceeded**
+#### ** API Rate Limits Exceeded**
 - **Reddit**: 60 requests/minute (automatic handling)
 - **Twitter**: 300 requests/15 minutes (graceful fallback)
 - **News**: 1000 requests/day on free tier (sample data used)
 
-#### **🧠 Empty Sentiment Analysis**
+#### ** Empty Sentiment Analysis**
 ```bash
 # Check for data in collection directories
 find data/collection_* -name "*.json" | head -5
@@ -328,7 +328,7 @@ find data/collection_* -name "*.json" | head -5
 # System works with sample data if APIs unavailable
 ```
 
-#### **🧪 Test Failures**
+#### ** Test Failures**
 ```bash
 # Check individual test components
 python -m pytest tests/test_sentiment_analysis.py -v
@@ -339,7 +339,7 @@ python -m pytest tests/test_system_integration.py -v
 tail -f logs/fear_greed_engine_*.log
 ```
 
-### **🔧 Performance Optimization**
+### ** Performance Optimization**
 ```bash
 # Clean old data (older than 7 days)
 find data/ -type d -name "*_*" -mtime +7 -exec rm -rf {} \;
@@ -354,7 +354,7 @@ print(f'Available: {psutil.virtual_memory().available / 1024**3:.1f} GB')
 
 ---
 
-## 📈 **Current Performance Metrics**
+##  **Current Performance Metrics**
 
 ### **⚡ Real Performance Data**
 - **Data Processing**: 247 posts in ~4 seconds
@@ -364,7 +364,7 @@ print(f'Available: {psutil.virtual_memory().available / 1024**3:.1f} GB')
 - **Fear & Greed Calculation**: <1ms
 - **Dashboard Load Time**: <2 seconds
 
-### **📊 Data Quality Metrics**
+### ** Data Quality Metrics**
 - **Reddit Posts**: 172 real posts analyzed
 - **News Articles**: 45 articles processed
 - **Market Updates**: 30 real-time data points
@@ -375,9 +375,9 @@ print(f'Available: {psutil.virtual_memory().available / 1024**3:.1f} GB')
 
 ---
 
-## 📚 **Documentation**
+##  **Documentation**
 
-### **📖 Complete Documentation**
+### ** Complete Documentation**
 - **[Documentation Overview](documentation/README.md)** - Complete documentation index
 - **[API Reference](documentation/api/api_reference.md)** - RESTful API documentation
 - **[Integration Guide](documentation/api/integration_guide.md)** - Integration examples
@@ -404,7 +404,7 @@ print(f'Available: {psutil.virtual_memory().available / 1024**3:.1f} GB')
 
 ---
 
-## 🤝 **Contributing**
+##  **Contributing**
 
 ### **🔧 Development Setup**
 ```bash
@@ -421,15 +421,15 @@ pip install -r requirements.txt
 python -m pytest tests/ -v
 ```
 
-### **🎯 Contribution Areas**
-- **🧠 ML/AI Improvements**: Better sentiment models, prediction algorithms
-- **📊 New Data Sources**: Discord, Telegram, YouTube comments
-- **🎨 UI/UX**: Dashboard enhancements, mobile responsiveness
-- **⚡ Performance**: Optimization, caching, real-time updates
-- **📖 Documentation**: Tutorials, API docs, examples
-- **🧪 Testing**: Unit tests, integration tests, performance tests
+### ** Contribution Areas**
+- ** ML/AI Improvements**: Better sentiment models, prediction algorithms
+- ** New Data Sources**: Discord, Telegram, YouTube comments
+- ** UI/UX**: Dashboard enhancements, mobile responsiveness
+- ** Performance**: Optimization, caching, real-time updates
+- ** Documentation**: Tutorials, API docs, examples
+- ** Testing**: Unit tests, integration tests, performance tests
 
-### **📝 Contribution Guidelines**
+### ** Contribution Guidelines**
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/amazing-feature`
 3. Make your changes and add tests
@@ -440,37 +440,37 @@ python -m pytest tests/ -v
 
 ---
 
-## 📄 **License & Disclaimer**
+##  **License & Disclaimer**
 
-### **📝 MIT License**
+### ** MIT License**
 This project is open source under the MIT License - see [LICENSE](LICENSE) for details.
 
-### **⚠️ Important Disclaimer**
+### ** Important Disclaimer**
 **This software is for educational and research purposes only.**
 
-- **❌ Not Financial Advice**: Do not use for actual trading without proper risk management
-- **📊 Educational Tool**: Designed for learning sentiment analysis and market psychology
-- **🔬 Research Purpose**: Suitable for academic and analytical research
-- **⚠️ No Liability**: Authors not responsible for any financial decisions or losses
+- ** Not Financial Advice**: Do not use for actual trading without proper risk management
+- ** Educational Tool**: Designed for learning sentiment analysis and market psychology
+- ** Research Purpose**: Suitable for academic and analytical research
+- ** No Liability**: Authors not responsible for any financial decisions or losses
 
 ---
 
-## 🌟 **What's Next?**
+##  **What's Next?**
 
-### **🎯 Immediate Next Steps**
-1. **🧪 Run the test suite**: `python -m pytest tests/ -v`
-2. **📊 Validate your system**: `python tests/test_system_integration.py`
-3. **🌐 Explore the dashboard**: http://localhost:5000
-4. **📖 Read the documentation**: [documentation/README.md](documentation/README.md)
+### ** Immediate Next Steps**
+1. ** Run the test suite**: `python -m pytest tests/ -v`
+2. ** Validate your system**: `python tests/test_system_integration.py`
+3. ** Explore the dashboard**: http://localhost:5000
+4. ** Read the documentation**: [documentation/README.md](documentation/README.md)
 
-### **🚀 Advanced Usage**
+### ** Advanced Usage**
 - Set up automated data collection with cron jobs
 - Deploy to production with Docker
 - Integrate with trading platforms (paper trading only)
 - Extend with custom sentiment models
 - Build mobile apps using the API
 
-### **📚 Learning Resources**
+### ** Learning Resources**
 - **[Complete Beginner's Guide](documentation/beginner_guide/README.md)** - Start here if you're new
 - **[API Integration Examples](documentation/api/integration_guide.md)** - Build your own applications
 - **[Research Papers](documentation/research/)** - Academic research and findings
@@ -480,7 +480,7 @@ This project is open source under the MIT License - see [LICENSE](LICENSE) for d
 
 <div align="center">
 
-## 🎉 **Ready to Analyze Market Sentiment?**
+##  **Ready to Analyze Market Sentiment?**
 
 ```bash
 # Get started in 3 commands:
@@ -490,12 +490,12 @@ python -m pytest tests/ -v               # Validate system
 ```
 
 ### **🌐 Quick Links**
-- **[📊 Web Dashboard](http://localhost:5000)** - Real-time sentiment monitoring
-- **[📚 Documentation](documentation/README.md)** - Complete documentation
-- **[🔧 API Reference](documentation/api/api_reference.md)** - RESTful API docs
-- **[🧪 Testing Guide](docs/TESTING_GUIDE.md)** - Validate your setup
+- **[ Web Dashboard](http://localhost:5000)** - Real-time sentiment monitoring
+- **[ Documentation](documentation/README.md)** - Complete documentation
+- **[ API Reference](documentation/api/api_reference.md)** - RESTful API docs
+- **[Testing Guide](docs/TESTING_GUIDE.md)** - Validate your setup
 
-**⭐ Star this repository if you find it useful!**
+** Star this repository if you find it useful!**
 
 *Built with ❤️ for the trading and crypto community*
 
