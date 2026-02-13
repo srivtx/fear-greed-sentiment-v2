@@ -99,12 +99,12 @@ python web_app.py
 The Fear & Greed Index (0-100) combines multiple sentiment factors:
 
 1. ** Sentiment Component (30%)** - VADER sentiment polarity analysis
-2. **Distribution Component (35%)** - Positive/negative post ratio
+2. ** Distribution Component (35%)** - Positive/negative post ratio
 3. ** Engagement Component (20%)** - Volume and activity metrics  
 4. ** Volatility Component (15%)** - Sentiment distribution variance
 5. ** Market Noise (±2%)** - Natural variation for realism
 
-### ** Interpretation Scale**
+### ** Interpretation Scale **
 - **0-25**:  **Extreme Fear** - Heavy selling pressure, potential buying opportunity
 - **26-45**: **Fear** - Market uncertainty, cautious sentiment
 - **46-55**:  **Neutral** - Balanced market sentiment
@@ -121,7 +121,7 @@ The Fear & Greed Index (0-100) combines multiple sentiment factors:
 
 ##  **Testing & Validation**
 
-### **🔍 Run Comprehensive Tests**
+### ** Run Comprehensive Tests**
 ```bash
 # Full automated test suite
 python -m pytest tests/ -v
@@ -489,14 +489,12 @@ python web_app.py                        # Start dashboard
 python -m pytest tests/ -v               # Validate system
 ```
 
-### **🌐 Quick Links**
+### ** Quick Links**
 - **[ Web Dashboard](http://localhost:5000)** - Real-time sentiment monitoring
 - **[ Documentation](documentation/README.md)** - Complete documentation
 - **[ API Reference](documentation/api/api_reference.md)** - RESTful API docs
 - **[Testing Guide](docs/TESTING_GUIDE.md)** - Validate your setup
 
-** Star this repository if you find it useful!**
 
-*Built with ❤️ for the trading and crypto community*
 
 </div>
