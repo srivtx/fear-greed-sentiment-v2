@@ -356,7 +356,7 @@ print(f'Available: {psutil.virtual_memory().available / 1024**3:.1f} GB')
 
 ##  **Current Performance Metrics**
 
-### **⚡ Real Performance Data**
+### ** Real Performance Data**
 - **Data Processing**: 247 posts in ~4 seconds
 - **API Response Time**: <87ms average
 - **Memory Usage**: ~52MB peak
